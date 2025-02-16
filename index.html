@@ -123,13 +123,43 @@
             color: #fff;
         }
 
-        .footer .copyright {
-            font-size: 1em;
-        }
-
         .footer .date-time {
             font-size: 0.9em;
             margin-top: 10px;
+        }
+
+        .footer .attribution {
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: #FFA500; /* Orange-Yellowish */
+        }
+
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            margin: 0 15px;
+            color: #FFA500;
+        }
+
+        .social-links img {
+            width: 50px; /* Larger size */
+            height: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        /* Hover effect for the social icons */
+        .footer .social-links a:hover img {
+            transform: scale(1.1); /* Increase the size */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        /* Copyright section */
+        .footer .copyright {
+            font-size: 0.8em;
+            margin-top: 20px;
+            color: #FFA500;
         }
     </style>
 </head>
@@ -206,35 +236,68 @@
     </div>
 
     <div class="footer">
-        <div class="copyright">
-            &copy; 2025 All Rights Reserved. For usage, contact at <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+        <div class="social-links">
+            <a href="https://www.instagram.com/johncolt29" target="_blank">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank">
+                <img src="wattpad.png" alt="Wattpad">
+            </a>
         </div>
-        <div class="date-time" id="date-time"></div>
+
+        <div class="attribution">
+            <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Freepik - Flaticon</a><br>
+            <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" style="color: #FFA500;">Instagram logo icons created by Freepik - Flaticon</a>
+        </div>
+
+        <p class="date-time" id="date-time"></p>
+
+        <!-- Copyright Section -->
+        <div class="copyright">
+            &copy; 2025 | All Rights Reserved. Do not use without permission. For permission, email at <a href="mailto:ironheist6@gmail.com" style="color: #FFA500;">ironheist6@gmail.com</a>
+        </div>
     </div>
 
     <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            document.getElementById('date-time').textContent = now.toLocaleString('en-US', options);
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display immediately
-
-        // Search function
         function searchBooks() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const books = document.getElementsByClassName('book');
-            for (let i = 0; i < books.length; i++) {
-                const title = books[i].getAttribute('data-title');
-                if (title.toLowerCase().includes(filter)) {
-                    books[i].style.display = '';
-                } else {
-                    books[i].style.display = 'none';
+            var input = document.getElementById('searchInput');
+            var filter = input.value.toUpperCase();
+            var books = document.getElementsByClassName('book');
+
+            for (var i = 0; i < books.length; i++) {
+                var title = books[i].getElementsByClassName('book-title')[0];
+                if (title) {
+                    var txtValue = title.textContent || title.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        books[i].style.display = "";
+                    } else {
+                        books[i].style.display = "none";
+                    }
                 }
             }
         }
+
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            return strTime;
+        }
+
+        function updateDateTime() {
+            var today = new Date();
+            var date = today.toDateString(); // Get the full date in "Weekday Month Day Year" format
+            var time = formatAMPM(today);
+            document.getElementById('date-time').innerHTML = date + ' | ' + time;
+        }
+
+        setInterval(updateDateTime, 1000); // Update every second
     </script>
 </body>
 </html>
