@@ -10,9 +10,45 @@
         gtag('config', 'G-91DDSJQ5K8');
     </script>
 
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Poetry Collection</title>
+    <meta name="description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta name="keywords" content="poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry">
+    <meta name="author" content="Iron Heist (John Colt)">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="My Poetry Collection | Iron Heist (John Colt)">
+    <meta property="og:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Poetry Collection | Iron Heist (John Colt)">
+    <meta name="twitter:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "My Poetry Collection | Iron Heist (John Colt)",
+        "description": "Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.",
+        "url": "https://yourwebsite.com",
+        "author": {
+            "@type": "Person",
+            "name": "Iron Heist (John Colt)"
+        },
+        "image": "https://yourwebsite.com/poetry.png",
+        "keywords": "poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry"
+    }
+    </script>
+
+    <title>My Poetry Collection | Iron Heist (John Colt)</title>
     <link rel="icon" href="poetry.png" type="image/x-icon" />
     <style>
         @font-face {
@@ -241,22 +277,32 @@
             background-color: #218838;
         }
 
+        /* Dark Mode Toggle (Circle) */
         .dark-mode-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
             background-color: #343a40;
             color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 1.2em;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .dark-mode-toggle:hover {
             background-color: #23272b;
+            transform: scale(1.1);
         }
 
+        /* Featured Poems Section */
         .featured-section {
             margin: 40px 0;
             padding: 20px;
@@ -324,11 +370,96 @@
                 height: 150px;
             }
         }
+
+        /* Timeline Section */
+        .timeline-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 245, 230, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .timeline-section {
+            background-color: rgba(30, 30, 30, 0.9);
+            color: #e0e0e0;
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            color: #d35400;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #007bff;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-year {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .timeline-content {
+            background-color: rgba(46, 46, 46, 0.9);
+            color: #e0e0e0;
+        }
+
+        .timeline-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</div>
+    <!-- Dark Mode Toggle (Circle) -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" title="Go to top">↑</a>
@@ -350,7 +481,7 @@
             <div class="featured-grid">
                 <div class="featured-poem">
                     <a href="index 9.html" target="_blank">
-                        <img src="GOG.jpeg" alt="Garden of Grief">
+                        <img src="GOG.jpeg" alt="Garden of Grief - A Collection of Poems by Iron Heist">
                         <div class="featured-info">
                             <h3>Garden of Grief</h3>
                             <p>A soul-stirring journey through loss and renewal</p>
@@ -359,12 +490,62 @@
                 </div>
                 <div class="featured-poem">
                     <a href="index 5.html" target="_blank">
-                        <img src="You are my moonlight.jpeg" alt="You are my Moonlight">
+                        <img src="You are my moonlight.jpeg" alt="You are my Moonlight - Romantic Poetry by Iron Heist">
                         <div class="featured-info">
                             <h3>You are my Moonlight</h3>
                             <p>Romantic verses bathed in lunar glow</p>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poetry Timeline Section -->
+        <div class="timeline-section">
+            <h2>📜 Poetry Timeline 📜</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>Drunk Off Her</strong> and <strong>You and the Moon</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Fool's Dream</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Let Down</strong></li>
+                            <li>Wrote <strong>A Diary of My Thoughts</strong></li>
+                            <li>Wrote <strong>Midday Blues</strong></li>
+                            <li>Wrote <strong>Fading Light?</strong></li>
+                            <li>Wrote <strong>Dawn & Dusk</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Published <strong>Garden of Grief</strong> (a collection of:
+                                <ul>
+                                    <li>A Diary of My Thoughts</li>
+                                    <li>Midday Blues</li>
+                                    <li>Fading Light?</li>
+                                    <li>Dawn & Dusk</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -378,55 +559,55 @@
         <div class="book-collection" id="bookCollection">
             <div class="book" data-title="Garden of Grief">
                 <a href="index 9.html" target="_blank">
-                    <img src="GOG.jpeg" alt="Garden of Grief">
+                    <img src="GOG.jpeg" alt="Garden of Grief - A Collection of Poems by Iron Heist">
                     <p class="book-title">Garden of Grief <br> A Collection of Poems</p>
                 </a>
             </div>
             <div class="book" data-title="A Diary of My Thoughts">
                 <a href="index 1.html" target="_blank">
-                    <img src="A Diary of my thoughts.jpeg" alt="A Diary of My Thoughts">
+                    <img src="A Diary of my thoughts.jpeg" alt="A Diary of My Thoughts - Philosophical Poetry by Iron Heist">
                     <p class="book-title">A Diary of My Thoughts</p>
                 </a>
             </div>
             <div class="book" data-title="Midday Blues">
                 <a href="index 2.html" target="_blank">
-                    <img src="Midday Blues.jpeg" alt="Midday Blues">
+                    <img src="Midday Blues.jpeg" alt="Midday Blues - Emotional Poetry by Iron Heist">
                     <p class="book-title">Midday Blues</p>
                 </a>
             </div>
             <div class="book" data-title="Fading Light?">
                 <a href="index 7.html" target="_blank">
-                    <img src="Fading Light.jpeg" alt="Fading Light">
+                    <img src="Fading Light.jpeg" alt="Fading Light? - Philosophical Poetry by Iron Heist">
                     <p class="book-title">Fading Light?</p>
                 </a>
             </div>
             <div class="book" data-title="Dawn & Dusk">
                 <a href="index 8.html" target="_blank">
-                    <img src="Dawn & Dusk.jpeg" alt="Dawn & Dusk">
+                    <img src="Dawn & Dusk.jpeg" alt="Dawn & Dusk - Reflective Poetry by Iron Heist">
                     <p class="book-title">Dawn & Dusk</p>
                 </a>
             </div>
             <div class="book" data-title="A Let Down">
                 <a href="index 3.html" target="_blank">
-                    <img src="A Letdown.jpeg" alt="A Let Down">
+                    <img src="A Letdown.jpeg" alt="A Let Down - Emotional Poetry by Iron Heist">
                     <p class="book-title">A Let Down</p>
                 </a>
             </div>
             <div class="book" data-title="Drunk Off Her">
                 <a href="index 4.html" target="_blank">
-                    <img src="Drunk OFF her.jpeg" alt="Drunk Off Her">
+                    <img src="Drunk OFF her.jpeg" alt="Drunk Off Her - Romantic Poetry by Iron Heist">
                     <p class="book-title">Drunk Off Her</p>
                 </a>
             </div>
             <div class="book" data-title="You and the Moon">
                 <a href="index 5.html" target="_blank">
-                    <img src="You are my moonlight.jpeg" alt="You and the Moon">
+                    <img src="You are my moonlight.jpeg" alt="You are my Moonlight - Romantic Poetry by Iron Heist">
                     <p class="book-title">You are my Moonlight</p>
                 </a>
             </div>
             <div class="book" data-title="A Fool's Dream">
                 <a href="index 6.html" target="_blank">
-                    <img src="A Fools Dream.jpeg" alt="A Fool's Dream">
+                    <img src="A Fools Dream.jpeg" alt="A Fool's Dream - Philosophical Poetry by Iron Heist">
                     <p class="book-title">A Fool's Dream</p>
                 </a>
             </div>
@@ -436,10 +617,10 @@
     <!-- Footer -->
     <div class="footer">
         <div class="social-links">
-            <a href="https://www.instagram.com/johncolt29" target="_blank">
+            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
                 <img src="instagram.png" alt="Instagram">
             </a>
-            <a href="https://www.wattpad.com/user/iron_heist" target="_blank">
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
                 <img src="wattpad.png" alt="Wattpad">
             </a>
         </div>
@@ -463,9 +644,9 @@
             document.body.classList.toggle('dark-mode');
             const darkModeToggle = document.querySelector('.dark-mode-toggle');
             if (document.body.classList.contains('dark-mode')) {
-                darkModeToggle.textContent = '☀️ Light Mode';
+                darkModeToggle.textContent = '☀️'; // Light mode icon
             } else {
-                darkModeToggle.textContent = '🌙 Dark Mode';
+                darkModeToggle.textContent = '🌙'; // Dark mode icon
             }
         }
 
