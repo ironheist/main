@@ -28,7 +28,108 @@
             margin: 0;
             padding: 0;
             color: #343a40;
+			transition: margin-left 0.3s ease;
         }
+		
+		 /* Timeline Sidebar Styles */
+        .timeline-sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: #F5F5DC;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            transition: 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .timeline-sidebar.active {
+            left: 0;
+        }
+
+        .timeline-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: 0.3s ease;
+        }
+
+        .timeline-toggle:hover {
+            background: #0056b3;
+            transform: rotate(90deg);
+        }
+
+        .timeline-content {
+            padding: 20px;
+        }
+
+        .timeline-year {
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 2px solid #e67e22;
+        }
+
+        .year-header {
+            color: #d35400;
+            margin: 10px 0;
+        }
+
+        .timeline-books {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .timeline-books li {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .timeline-books li:hover {
+            transform: translateX(10px);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            margin-left: 50px; /* Initial margin */
+            padding: 30px;
+            background-color: #F5F5DC;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .timeline-sidebar.active ~ .container {
+            margin-left: 350px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-sidebar {
+                width: 250px;
+                left: -250px;
+            }
+            
+            .timeline-sidebar.active ~ .container {
+                margin-left: 270px;
+            }
+        }
+		
         .container {
             width: 80%;
             margin: 50px auto;
@@ -164,6 +265,43 @@
     </style>
 </head>
 <body>
+    <!-- Timeline Sidebar -->
+    <button class="timeline-toggle" onclick="toggleTimeline()">☰</button>
+    <div class="timeline-sidebar">
+        <div class="timeline-content">
+            <h2>Writing Timeline</h2>
+            <div class="timeline-year">
+                <h3 class="year-header">2022</h3>
+                <ul class="timeline-books">
+                    <li onclick="scrollToBook('Drunk Off Her')">Drunk Off Her</li>
+                    <li onclick="scrollToBook('You and the Moon')">You and the Moon</li>
+                </ul>
+            </div>
+            <div class="timeline-year">
+                <h3 class="year-header">2023</h3>
+                <ul class="timeline-books">
+                    <li onclick="scrollToBook('A Fool\'s Dream')">A Fool's Dream</li>
+                </ul>
+            </div>
+            <div class="timeline-year">
+                <h3 class="year-header">2024</h3>
+                <ul class="timeline-books">
+                    <li onclick="scrollToBook('A Let Down')">A Let Down</li>
+                    <li onclick="scrollToBook('A Diary of My Thoughts')">A Diary of My Thoughts</li>
+                    <li onclick="scrollToBook('Midday Blues')">Midday Blues</li>
+                    <li onclick="scrollToBook('Fading Light?')">Fading Light?</li>
+                    <li onclick="scrollToBook('Dawn & Dusk')">Dawn & Dusk</li>
+                </ul>
+            </div>
+            <div class="timeline-year">
+                <h3 class="year-header">2025</h3>
+                <ul class="timeline-books">
+                    <li onclick="scrollToBook('Garden of Grief')">Garden of Grief</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <h1><u>My Poetry Collection</u></h1>
         <p class="introduction">
@@ -355,6 +493,51 @@
     </div>
 
     <script>
+	    // Timeline Functions
+        function toggleTimeline() {
+            document.querySelector('.timeline-sidebar').classList.toggle('active');
+        }
+
+        function scrollToBook(bookTitle) {
+            const books = document.querySelectorAll('.book');
+            books.forEach(book => {
+                if(book.dataset.title === bookTitle) {
+                    book.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    // Add highlight animation
+                    book.style.animation = 'highlight 1s ease';
+                    setTimeout(() => {
+                        book.style.animation = '';
+                    }, 1000);
+                }
+            });
+        }
+
+        // Close timeline when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.timeline-sidebar');
+            const toggleBtn = document.querySelector('.timeline-toggle');
+            
+            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Add highlight animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes highlight {
+                0% { background-color: transparent; }
+                50% { background-color: rgba(255, 165, 0, 0.2); }
+                100% { background-color: transparent; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Your existing search and date functions remain unchanged
+		
         function searchBooks() {
             var input = document.getElementById('searchInput');
             var filter = input.value.toUpperCase();
