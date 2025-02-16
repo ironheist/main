@@ -371,7 +371,7 @@
             }
         }
 
-        /* Timeline Section */
+        /* Horizontal Timeline Section */
         .timeline-section {
             margin: 40px 0;
             padding: 20px;
@@ -394,37 +394,26 @@
         }
 
         .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
             padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: #007bff;
-            transform: translateX(-50%);
+            scroll-behavior: smooth;
         }
 
         .timeline-item {
-            padding: 20px 40px;
-            position: relative;
-            width: 50%;
+            flex: 0 0 auto;
+            width: 250px;
+            margin-right: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            text-align: left;
+        body.dark-mode .timeline-item {
+            background-color: rgba(46, 46, 46, 0.9);
+            color: #e0e0e0;
         }
 
         .timeline-year {
@@ -432,19 +421,6 @@
             font-weight: bold;
             color: #007bff;
             margin-bottom: 10px;
-        }
-
-        .timeline-content {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.dark-mode .timeline-content {
-            background-color: rgba(46, 46, 46, 0.9);
-            color: #e0e0e0;
         }
 
         .timeline-content ul {
@@ -496,56 +472,6 @@
                             <p>Romantic verses bathed in lunar glow</p>
                         </div>
                     </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Poetry Timeline Section -->
-        <div class="timeline-section">
-            <h2>📜 Poetry Timeline 📜</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2022</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Wrote <strong>Drunk Off Her</strong> and <strong>You and the Moon</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2023</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Wrote <strong>A Fool's Dream</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Wrote <strong>A Let Down</strong></li>
-                            <li>Wrote <strong>A Diary of My Thoughts</strong></li>
-                            <li>Wrote <strong>Midday Blues</strong></li>
-                            <li>Wrote <strong>Fading Light?</strong></li>
-                            <li>Wrote <strong>Dawn & Dusk</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Published <strong>Garden of Grief</strong> (a collection of:
-                                <ul>
-                                    <li>A Diary of My Thoughts</li>
-                                    <li>Midday Blues</li>
-                                    <li>Fading Light?</li>
-                                    <li>Dawn & Dusk</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -610,6 +536,56 @@
                     <img src="A Fools Dream.jpeg" alt="A Fool's Dream - Philosophical Poetry by Iron Heist">
                     <p class="book-title">A Fool's Dream</p>
                 </a>
+            </div>
+        </div>
+
+        <!-- Horizontal Timeline Section -->
+        <div class="timeline-section">
+            <h2>📜 Poetry Timeline 📜</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>Drunk Off Her</strong> and <strong>You and the Moon</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Fool's Dream</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Let Down</strong></li>
+                            <li>Wrote <strong>A Diary of My Thoughts</strong></li>
+                            <li>Wrote <strong>Midday Blues</strong></li>
+                            <li>Wrote <strong>Fading Light?</strong></li>
+                            <li>Wrote <strong>Dawn & Dusk</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Compiled <strong>Garden of Grief</strong> a collection of the following:
+                                <ul>
+                                    <li>A Diary of My Thoughts</li>
+                                    <li>Midday Blues</li>
+                                    <li>Fading Light?</li>
+                                    <li>Dawn & Dusk</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
