@@ -169,6 +169,102 @@
         <p class="introduction">
             Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
         </p>
+		
+		<!-- Add this right after the introduction paragraph -->
+<div class="featured-section">
+    <h2>🌟 Featured Poems 🌟</h2>
+    <div class="featured-grid">
+        <div class="featured-poem">
+            <a href="index 9.html" target="_blank">
+                <img src="GOG.jpeg" alt="Garden of Grief">
+                <div class="featured-info">
+                    <h3>Garden of Grief</h3>
+                    <p>A soul-stirring journey through loss and renewal</p>
+                </div>
+            </a>
+        </div>
+        <div class="featured-poem">
+            <a href="index 5.html" target="_blank">
+                <img src="You are my moonlight.jpeg" alt="You are my Moonlight">
+                <div class="featured-info">
+                    <h3>You are my Moonlight</h3>
+                    <p>Romantic verses bathed in lunar glow</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add this CSS at the end of your style section (before </style>) -->
+<style>
+    /* Featured Poems Section */
+    .featured-section {
+        margin: 40px 0;
+        padding: 20px;
+        background: rgba(255, 245, 230, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .featured-section h2 {
+        text-align: center;
+        color: #d35400;
+        margin-bottom: 25px;
+        font-size: 1.8em;
+    }
+
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .featured-poem {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .featured-poem:hover {
+        transform: translateY(-3px);
+    }
+
+    .featured-poem img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .featured-info {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 0 0 6px 6px;
+    }
+
+    .featured-info h3 {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.3em;
+    }
+
+    .featured-info p {
+        margin: 8px 0 0;
+        color: #7f8c8d;
+        font-size: 0.95em;
+    }
+
+    @media (max-width: 768px) {
+        .featured-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .featured-poem img {
+            height: 200px;
+        }
+    }
+</style>
 
         <!-- Search Bar -->
         <div class="search-container">
