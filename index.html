@@ -7,7 +7,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-91DDSJQ5K8');
     </script>
 
@@ -28,108 +27,14 @@
             margin: 0;
             padding: 0;
             color: #343a40;
-			transition: margin-left 0.3s ease;
-        }
-		
-		 /* Timeline Sidebar Styles */
-        .timeline-sidebar {
-            position: fixed;
-            left: -300px;
-            top: 0;
-            width: 300px;
-            height: 100vh;
-            background: #F5F5DC;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-            transition: 0.3s ease;
-            z-index: 1000;
-            padding: 20px;
-            overflow-y: auto;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .timeline-sidebar.active {
-            left: 0;
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
-        .timeline-toggle {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            z-index: 1001;
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2em;
-            transition: 0.3s ease;
-        }
-
-        .timeline-toggle:hover {
-            background: #0056b3;
-            transform: rotate(90deg);
-        }
-
-        .timeline-content {
-            padding: 20px;
-        }
-
-        .timeline-year {
-            margin: 20px 0;
-            padding-left: 20px;
-            border-left: 2px solid #e67e22;
-        }
-
-        .year-header {
-            color: #d35400;
-            margin: 10px 0;
-        }
-
-        .timeline-books {
-            list-style: none;
-            padding-left: 15px;
-        }
-
-        .timeline-books li {
-            margin: 10px 0;
-            padding: 8px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .timeline-books li:hover {
-            transform: translateX(10px);
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            margin-left: 50px; /* Initial margin */
-            padding: 30px;
-            background-color: #F5F5DC;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: 0.3s ease;
-        }
-
-        .timeline-sidebar.active ~ .container {
-            margin-left: 350px;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-sidebar {
-                width: 250px;
-                left: -250px;
-            }
-            
-            .timeline-sidebar.active ~ .container {
-                margin-left: 270px;
-            }
-        }
-		
         .container {
             width: 80%;
             margin: 50px auto;
@@ -137,22 +42,42 @@
             background-color: #F5F5DC;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        body.dark-mode .container {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
         h1 {
             text-align: center;
             color: #343a40;
+            transition: color 0.3s;
         }
+
+        body.dark-mode h1 {
+            color: #e0e0e0;
+        }
+
         .introduction {
             text-align: center;
             font-size: 1.2em;
             margin-bottom: 30px;
             color: #495057;
+            transition: color 0.3s;
         }
+
+        body.dark-mode .introduction {
+            color: #b0b0b0;
+        }
+
         /* Search bar styles */
         .search-container {
             text-align: center;
             margin-bottom: 30px;
         }
+
         .search-container input {
             width: 50%;
             padding: 10px;
@@ -160,50 +85,62 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             outline: none;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
         }
+
+        body.dark-mode .search-container input {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
         .search-container input:focus {
             border-color: #007bff;
         }
 
         .book-collection {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-            gap: 20px; /* Space between items */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             justify-items: center;
         }
 
         @media (max-width: 1200px) {
             .book-collection {
-                grid-template-columns: repeat(3, 1fr); /* 3 items per row on smaller screens */
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .book-collection {
-                grid-template-columns: repeat(2, 1fr); /* 2 items per row on mobile screens */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 480px) {
             .book-collection {
-                grid-template-columns: 1fr; /* 1 item per row on very small screens */
+                grid-template-columns: 1fr;
             }
         }
+
         .book {
             width: 200px;
             margin: 20px;
             text-align: center;
         }
+
         .book img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .book img:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
+
         .book-title {
             margin-top: 10px;
             font-size: 1.1em;
@@ -211,6 +148,7 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .book-title:hover {
             color: #0056b3;
             text-decoration: underline;
@@ -222,6 +160,12 @@
             padding: 20px;
             background-color: #343a40;
             color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .footer {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
         }
 
         .footer .date-time {
@@ -232,7 +176,7 @@
         .footer .attribution {
             font-size: 0.9em;
             margin-top: 10px;
-            color: #FFA500; /* Orange-Yellowish */
+            color: #FFA500;
         }
 
         .footer .social-links {
@@ -245,179 +189,199 @@
         }
 
         .social-links img {
-            width: 50px; /* Larger size */
+            width: 50px;
             height: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Hover effect for the social icons */
         .footer .social-links a:hover img {
-            transform: scale(1.1); /* Increase the size */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Copyright section */
         .footer .copyright {
             font-size: 0.8em;
             margin-top: 20px;
             color: #FFA500;
         }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        .random-poem-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .random-poem-button button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .random-poem-button button:hover {
+            background-color: #218838;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #23272b;
+        }
+
+        .featured-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 245, 230, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .featured-section h2 {
+            text-align: center;
+            color: #d35400;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .featured-poem {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-poem:hover {
+            transform: translateY(-3px);
+        }
+
+        .featured-poem img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .featured-info {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0 0 6px 6px;
+        }
+
+        .featured-info h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .featured-info p {
+            margin: 8px 0 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-poem img {
+                height: 150px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Timeline Sidebar -->
-    <button class="timeline-toggle" onclick="toggleTimeline()">☰</button>
-    <div class="timeline-sidebar">
-        <div class="timeline-content">
-            <h2>Writing Timeline</h2>
-            <div class="timeline-year">
-                <h3 class="year-header">2022</h3>
-                <ul class="timeline-books">
-                    <li onclick="scrollToBook('Drunk Off Her')">Drunk Off Her</li>
-                    <li onclick="scrollToBook('You and the Moon')">You and the Moon</li>
-                </ul>
-            </div>
-            <div class="timeline-year">
-                <h3 class="year-header">2023</h3>
-                <ul class="timeline-books">
-                    <li onclick="scrollToBook('A Fool\'s Dream')">A Fool's Dream</li>
-                </ul>
-            </div>
-            <div class="timeline-year">
-                <h3 class="year-header">2024</h3>
-                <ul class="timeline-books">
-                    <li onclick="scrollToBook('A Let Down')">A Let Down</li>
-                    <li onclick="scrollToBook('A Diary of My Thoughts')">A Diary of My Thoughts</li>
-                    <li onclick="scrollToBook('Midday Blues')">Midday Blues</li>
-                    <li onclick="scrollToBook('Fading Light?')">Fading Light?</li>
-                    <li onclick="scrollToBook('Dawn & Dusk')">Dawn & Dusk</li>
-                </ul>
-            </div>
-            <div class="timeline-year">
-                <h3 class="year-header">2025</h3>
-                <ul class="timeline-books">
-                    <li onclick="scrollToBook('Garden of Grief')">Garden of Grief</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" title="Go to top">↑</a>
 
     <div class="container">
         <h1><u>My Poetry Collection</u></h1>
         <p class="introduction">
             Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
         </p>
-		
-		<!-- Add this right after the introduction paragraph -->
-<div class="featured-section">
-    <h2>🌟 Featured Poems 🌟</h2>
-    <div class="featured-grid">
-        <div class="featured-poem">
-            <a href="index 9.html" target="_blank">
-                <img src="GOG.jpeg" alt="Garden of Grief">
-                <div class="featured-info">
-                    <h3>Garden of Grief</h3>
-                    <p>A soul-stirring journey through loss and renewal</p>
-                </div>
-            </a>
+
+        <!-- Random Poem Button -->
+        <div class="random-poem-button">
+            <button onclick="redirectToRandomPoem()">🎲 Read a Random Poem</button>
         </div>
-        <div class="featured-poem">
-            <a href="index 5.html" target="_blank">
-                <img src="You are my moonlight.jpeg" alt="You are my Moonlight">
-                <div class="featured-info">
-                    <h3>You are my Moonlight</h3>
-                    <p>Romantic verses bathed in lunar glow</p>
+
+        <!-- Featured Poems Section -->
+        <div class="featured-section">
+            <h2>🌟 Featured Poems 🌟</h2>
+            <div class="featured-grid">
+                <div class="featured-poem">
+                    <a href="index 9.html" target="_blank">
+                        <img src="GOG.jpeg" alt="Garden of Grief">
+                        <div class="featured-info">
+                            <h3>Garden of Grief</h3>
+                            <p>A soul-stirring journey through loss and renewal</p>
+                        </div>
+                    </a>
                 </div>
-            </a>
+                <div class="featured-poem">
+                    <a href="index 5.html" target="_blank">
+                        <img src="You are my moonlight.jpeg" alt="You are my Moonlight">
+                        <div class="featured-info">
+                            <h3>You are my Moonlight</h3>
+                            <p>Romantic verses bathed in lunar glow</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-<!-- Add this CSS at the end of your style section (before </style>) -->
-<style>
-    /* Featured Poems Section */
-    .featured-section {
-        margin: 40px 0;
-        padding: 20px;
-        background: rgba(255, 245, 230, 0.9);
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .featured-section h2 {
-        text-align: center;
-        color: #d35400;
-        margin-bottom: 25px;
-        font-size: 1.8em;
-    }
-
-    .featured-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-
-    .featured-poem {
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .featured-poem:hover {
-        transform: translateY(-3px);
-    }
-
-    .featured-poem img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 6px;
-    }
-
-    .featured-info {
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 0 0 6px 6px;
-    }
-
-    .featured-info h3 {
-        margin: 0;
-        color: #2c3e50;
-        font-size: 1.3em;
-    }
-
-    .featured-info p {
-        margin: 8px 0 0;
-        color: #7f8c8d;
-        font-size: 0.95em;
-    }
-
-    @media (max-width: 768px) {
-        .featured-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .featured-poem img {
-            height: 200px;
-        }
-    }
-</style>
 
         <!-- Search Bar -->
         <div class="search-container">
             <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
         </div>
 
+        <!-- Book Collection -->
         <div class="book-collection" id="bookCollection">
-            <!-- Garden of Grief placed within the grid for alignment -->
             <div class="book" data-title="Garden of Grief">
                 <a href="index 9.html" target="_blank">
                     <img src="GOG.jpeg" alt="Garden of Grief">
                     <p class="book-title">Garden of Grief <br> A Collection of Poems</p>
                 </a>
             </div>
-            <!-- Other books remain the same -->
             <div class="book" data-title="A Diary of My Thoughts">
                 <a href="index 1.html" target="_blank">
                     <img src="A Diary of my thoughts.jpeg" alt="A Diary of My Thoughts">
@@ -469,6 +433,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
         <div class="social-links">
             <a href="https://www.instagram.com/johncolt29" target="_blank">
@@ -493,60 +458,47 @@
     </div>
 
     <script>
-	    // Timeline Functions
-        function toggleTimeline() {
-            document.querySelector('.timeline-sidebar').classList.toggle('active');
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = '☀️ Light Mode';
+            } else {
+                darkModeToggle.textContent = '🌙 Dark Mode';
+            }
         }
 
-        function scrollToBook(bookTitle) {
-            const books = document.querySelectorAll('.book');
-            books.forEach(book => {
-                if(book.dataset.title === bookTitle) {
-                    book.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                    // Add highlight animation
-                    book.style.animation = 'highlight 1s ease';
-                    setTimeout(() => {
-                        book.style.animation = '';
-                    }, 1000);
-                }
-            });
+        // Back to Top Button
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        // Random Poem Redirect
+        function redirectToRandomPoem() {
+            const poems = [
+                'index 1.html', 'index 2.html', 'index 3.html', 'index 4.html',
+                'index 5.html', 'index 6.html', 'index 7.html', 'index 8.html', 'index 9.html'
+            ];
+            const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+            window.location.href = randomPoem;
         }
 
-        // Close timeline when clicking outside
-        document.addEventListener('click', function(event) {
-            const sidebar = document.querySelector('.timeline-sidebar');
-            const toggleBtn = document.querySelector('.timeline-toggle');
-            
-            if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-                sidebar.classList.remove('active');
-            }
-        });
-
-        // Add highlight animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes highlight {
-                0% { background-color: transparent; }
-                50% { background-color: rgba(255, 165, 0, 0.2); }
-                100% { background-color: transparent; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Your existing search and date functions remain unchanged
-		
+        // Search Functionality
         function searchBooks() {
-            var input = document.getElementById('searchInput');
-            var filter = input.value.toUpperCase();
-            var books = document.getElementsByClassName('book');
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const books = document.getElementsByClassName('book');
 
-            for (var i = 0; i < books.length; i++) {
-                var title = books[i].getElementsByClassName('book-title')[0];
+            for (let i = 0; i < books.length; i++) {
+                const title = books[i].getElementsByClassName('book-title')[0];
                 if (title) {
-                    var txtValue = title.textContent || title.innerText;
+                    const txtValue = title.textContent || title.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         books[i].style.display = "";
                     } else {
@@ -556,24 +508,24 @@
             }
         }
 
+        // Date and Time
         function formatAMPM(date) {
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var seconds = date.getSeconds();
-            var ampm = hours >= 12 ? 'PM' : 'AM';
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
             hours = hours ? hours : 12; // the hour '0' should be '12'
             minutes = minutes < 10 ? '0' + minutes : minutes;
             seconds = seconds < 10 ? '0' + seconds : seconds;
-            var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-            return strTime;
+            return `${hours}:${minutes}:${seconds} ${ampm}`;
         }
 
         function updateDateTime() {
-            var today = new Date();
-            var date = today.toDateString(); // Get the full date in "Weekday Month Day Year" format
-            var time = formatAMPM(today);
-            document.getElementById('date-time').innerHTML = date + ' | ' + time;
+            const today = new Date();
+            const date = today.toDateString();
+            const time = formatAMPM(today);
+            document.getElementById('date-time').innerHTML = `${date} | ${time}`;
         }
 
         setInterval(updateDateTime, 1000); // Update every second
