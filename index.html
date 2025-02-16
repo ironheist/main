@@ -47,6 +47,23 @@
             margin-bottom: 30px;
             color: #495057;
         }
+        /* Search bar styles */
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .search-container input:focus {
+            border-color: #007bff;
+        }
+
         .book-collection {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4 items per row */
@@ -97,6 +114,23 @@
             color: #0056b3;
             text-decoration: underline;
         }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .footer .copyright {
+            font-size: 1em;
+        }
+
+        .footer .date-time {
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -105,56 +139,64 @@
         <p class="introduction">
             Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
         </p>
-        <div class="book">
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
+        </div>
+
+        <div class="book-collection" id="bookCollection">
+            <!-- Garden of Grief placed within the grid for alignment -->
+            <div class="book" data-title="Garden of Grief">
                 <a href="index 9.html" target="_blank">
-                    <img src="GOG.jpeg" alt="Midday Blues">
+                    <img src="GOG.jpeg" alt="Garden of Grief">
                     <p class="book-title">Garden of Grief <br> A Collection of Poems</p>
                 </a>
             </div>
-        <div class="book-collection">
-            <div class="book">
+            <!-- Other books remain the same -->
+            <div class="book" data-title="A Diary of My Thoughts">
                 <a href="index 1.html" target="_blank">
                     <img src="A Diary of my thoughts.jpeg" alt="A Diary of My Thoughts">
                     <p class="book-title">A Diary of My Thoughts</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="Midday Blues">
                 <a href="index 2.html" target="_blank">
                     <img src="Midday Blues.jpeg" alt="Midday Blues">
                     <p class="book-title">Midday Blues</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="Fading Light?">
                 <a href="index 7.html" target="_blank">
                     <img src="Fading Light.jpeg" alt="Fading Light">
                     <p class="book-title">Fading Light?</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="Dawn & Dusk">
                 <a href="index 8.html" target="_blank">
                     <img src="Dawn & Dusk.jpeg" alt="Dawn & Dusk">
                     <p class="book-title">Dawn & Dusk</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="A Let Down">
                 <a href="index 3.html" target="_blank">
                     <img src="A Letdown.jpeg" alt="A Let Down">
                     <p class="book-title">A Let Down</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="Drunk Off Her">
                 <a href="index 4.html" target="_blank">
                     <img src="Drunk OFF her.jpeg" alt="Drunk Off Her">
                     <p class="book-title">Drunk Off Her</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="You and the Moon">
                 <a href="index 5.html" target="_blank">
                     <img src="You are my moonlight.jpeg" alt="You and the Moon">
                     <p class="book-title">You are my Moonlight</p>
                 </a>
             </div>
-            <div class="book">
+            <div class="book" data-title="A Fool's Dream">
                 <a href="index 6.html" target="_blank">
                     <img src="A Fools Dream.jpeg" alt="A Fool's Dream">
                     <p class="book-title">A Fool's Dream</p>
@@ -162,5 +204,37 @@
             </div>
         </div>
     </div>
+
+    <div class="footer">
+        <div class="copyright">
+            &copy; 2025 All Rights Reserved. For usage, contact at <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+        </div>
+        <div class="date-time" id="date-time"></div>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('date-time').textContent = now.toLocaleString('en-US', options);
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // Initial call to display immediately
+
+        // Search function
+        function searchBooks() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const books = document.getElementsByClassName('book');
+            for (let i = 0; i < books.length; i++) {
+                const title = books[i].getAttribute('data-title');
+                if (title.toLowerCase().includes(filter)) {
+                    books[i].style.display = '';
+                } else {
+                    books[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
