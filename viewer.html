@@ -21,7 +21,6 @@
             flex-direction: column;
             min-height: 100vh;
             transition: background-color 0.3s, color 0.3s;
-            /* Disable text selection on the entire page */
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -37,8 +36,11 @@
             background: #343a40;
             color: #fff;
             padding: 15px 20px;
-            text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         body.dark-mode header {
@@ -48,27 +50,39 @@
         header h1 {
             margin: 0;
             font-size: 1.8em;
+            flex: 1;
         }
 
         .controls {
-            margin-top: 10px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            align-items: center;
         }
 
-        .controls button {
+        .controls button, .dark-mode-toggle {
             background: #007bff;
             color: #fff;
             border: none;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .controls button:hover {
+        .controls button:hover, .dark-mode-toggle:hover {
             background: #0056b3;
+        }
+
+        .dark-mode-toggle {
+            background: #007bff;
+            width: 36px;
+            height: 30px;
+            font-size: 1em;
+            padding: 0;
         }
 
         #pdfViewer {
@@ -98,99 +112,90 @@
             text-decoration: underline;
         }
 
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #343a40;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 1.2em;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .controls {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                width: 100%;
+                gap: 6px;
+            }
+            .controls button, .dark-mode-toggle {
+                padding: 5px 8px;
+                font-size: 0.8em;
+            }
+            .dark-mode-toggle {
+                width: 30px;
+                height: 26px;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
         }
 
-        .dark-mode-toggle:hover {
-            background-color: #23272b;
-            transform: scale(1.1);
+        @media (max-width: 480px) {
+            .controls {
+                gap: 5px;
+            }
+            .controls button, .dark-mode-toggle {
+                padding: 4px 6px;
+                font-size: 0.7em;
+            }
+            .dark-mode-toggle {
+                width: 26px;
+                height: 24px;
+            }
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <!-- Disable right-click context menu -->
-    <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
+<body oncontextmenu="return false;">
     <header>
         <h1 id="pdfTitle">Loading...</h1>
         <div class="controls">
             <button onclick="bookmarkPage()">Bookmark</button>
             <button onclick="goToBookmark()">Go to Bookmark</button>
-            <button onclick="window.location.href='index.html'">Back to Main Page</button>
+            <button onclick="removeBookmark()">Remove Bookmark</button>
+            <button onclick="window.location.href='index.html'">Back</button>
+            <button class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</button>
         </div>
     </header>
     <iframe id="pdfViewer" loading="lazy"></iframe>
     <footer>
-        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email&#160;protected]</span></a>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return decodeURIComponent(urlParams.get(param));
+        }
 
-       function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return decodeURIComponent(urlParams.get(param));
-}
+        const pdfUrl = getQueryParam('pdf');
+        const title = getQueryParam('title');
 
-const pdfUrl = getQueryParam('pdf');
-const title = getQueryParam('title');
+        document.getElementById('pdfTitle').textContent = title || 'Poetry Viewer';
+        const iframe = document.getElementById('pdfViewer');
 
-// Log the pdfUrl for debugging
-console.log("PDF URL from query parameter:", pdfUrl);
-
-document.getElementById('pdfTitle').textContent = title || 'Poetry Viewer';
-const iframe = document.getElementById('pdfViewer');
-
-// Use the CDN-hosted viewer with an absolute URL for the PDF
-const absolutePdfUrl = `https://ironheist.github.io/main/${pdfUrl}`;
-const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
-
-// Log the constructed viewer URL for debugging
-console.log("Constructed PDF.js viewer URL:", viewerUrl);
-
-iframe.src = viewerUrl;
+        const absolutePdfUrl = `https://ironheist.github.io/main/${pdfUrl}`;
+        const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
+        iframe.src = viewerUrl;
 
         iframe.onload = () => {
             try {
-                // Disable text layer rendering to prevent text selection
                 iframe.contentWindow.PDFViewerApplicationOptions.set('disableTextLayer', true);
-                // Enable annotations (if needed)
                 iframe.contentWindow.PDFViewerApplicationOptions.set('annotationMode', 2);
 
                 setTimeout(() => {
                     const viewerDoc = iframe.contentWindow.document;
-                    // Hide the download button
                     const downloadButton = viewerDoc.getElementById('download');
-                    if (downloadButton) {
-                        downloadButton.style.display = 'none';
-                        console.log("Download button hidden successfully.");
-                    } else {
-                        console.error("Download button not found in PDF.js viewer.");
-                    }
-
-                    // Hide the print button
+                    if (downloadButton) downloadButton.style.display = 'none';
                     const printButton = viewerDoc.getElementById('print');
-                    if (printButton) {
-                        printButton.style.display = 'none';
-                        console.log("Print button hidden successfully.");
-                    } else {
-                        console.error("Print button not found in PDF.js viewer.");
-                    }
-
-                    // Disable text selection in the PDF viewer
+                    if (printButton) printButton.style.display = 'none';
                     const viewerContainer = viewerDoc.getElementById('viewerContainer');
                     if (viewerContainer) {
                         viewerContainer.style.userSelect = 'none';
@@ -198,7 +203,6 @@ iframe.src = viewerUrl;
                         viewerContainer.style.mozUserSelect = 'none';
                         viewerContainer.style.msUserSelect = 'none';
                     }
-
                     loadBookmark(pdfUrl);
                 }, 1000);
             } catch (error) {
@@ -206,15 +210,9 @@ iframe.src = viewerUrl;
             }
         };
 
-        iframe.onerror = () => {
-            console.error("Error loading iframe with PDF.js viewer.");
-        };
-
-        // Disable print shortcuts (Ctrl+P, Cmd+P)
         document.addEventListener('keydown', (event) => {
             if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
                 event.preventDefault();
-                console.log("Print shortcut (Ctrl+P/Cmd+P) disabled.");
             }
         });
 
@@ -225,7 +223,7 @@ iframe.src = viewerUrl;
                 alert(`Bookmarked page ${page} for "${title}"`);
             } catch (error) {
                 console.error("Error bookmarking page:", error);
-                alert("Failed to bookmark page. Please ensure the PDF is loaded.");
+                alert("Failed to bookmark page.");
             }
         }
 
@@ -239,7 +237,21 @@ iframe.src = viewerUrl;
                 }
             } catch (error) {
                 console.error("Error going to bookmark:", error);
-                alert("Failed to go to bookmark. Please ensure the PDF is loaded.");
+                alert("Failed to go to bookmark.");
+            }
+        }
+
+        function removeBookmark() {
+            try {
+                if (localStorage.getItem(`bookmark_${pdfUrl}`)) {
+                    localStorage.removeItem(`bookmark_${pdfUrl}`);
+                    alert(`Bookmark removed for "${title}"`);
+                } else {
+                    alert('No bookmark exists for this poem.');
+                }
+            } catch (error) {
+                console.error("Error removing bookmark:", error);
+                alert("Failed to remove bookmark.");
             }
         }
 
@@ -248,7 +260,6 @@ iframe.src = viewerUrl;
                 const page = localStorage.getItem(`bookmark_${pdfUrl}`);
                 if (page) {
                     iframe.contentWindow.PDFViewerApplication.page = parseInt(page);
-                    console.log(`Loaded bookmark for ${pdfUrl}: page ${page}`);
                 }
             } catch (error) {
                 console.error("Error loading bookmark:", error);
