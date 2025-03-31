@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Heist Poetry Viewer</title>
+    <link rel="icon" href="poetry.png" type="image/x-icon" />
+    <style>
+        @font-face {
+            font-family: 'KirimomiSwash';
+            src: url('KirimomiSwash.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'KirimomiSwash', 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            /* Disable text selection on the entire page */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #121212 0%, #1a1a2e 100%);
+            color: #d3d3d3;
+        }
+
+        header {
+            background: #343a40;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode header {
+            background: #1e1e1e;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .controls button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .controls button:hover {
+            background: #0056b3;
+        }
+
+        #pdfViewer {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+
+        footer {
+            background: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+
+        body.dark-mode footer {
+            background: #1e1e1e;
+        }
+
+        footer a {
+            color: #FFA500;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #343a40;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.2em;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #23272b;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- Disable right-click context menu -->
+    <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
+    <header>
+        <h1 id="pdfTitle">Loading...</h1>
+        <div class="controls">
+            <button onclick="bookmarkPage()">Bookmark</button>
+            <button onclick="goToBookmark()">Go to Bookmark</button>
+            <button onclick="window.location.href='index.html'">Back to Main Page</button>
+        </div>
+    </header>
+    <iframe id="pdfViewer" loading="lazy"></iframe>
+    <footer>
+        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+    </footer>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return decodeURIComponent(urlParams.get(param));
+        }
+
+       const pdfUrl = getQueryParam('pdf');
+const title = getQueryParam('title');
+
+// Log the pdfUrl for debugging
+console.log("PDF URL from query parameter:", pdfUrl);
+
+document.getElementById('pdfTitle').textContent = title || 'Poetry Viewer';
+const iframe = document.getElementById('pdfViewer');
+
+// Use the CDN-hosted viewer and construct an absolute URL for the PDF
+const absolutePdfUrl = `https://ironheist.github.io/main/${pdfUrl}`;
+const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
+
+// Log the constructed viewer URL for debugging
+console.log("Constructed PDF.js viewer URL:", viewerUrl);
+
+iframe.src = viewerUrl;
+
+        iframe.onload = () => {
+            try {
+                // Disable text layer rendering to prevent text selection
+                iframe.contentWindow.PDFViewerApplicationOptions.set('disableTextLayer', true);
+                // Enable annotations (if needed)
+                iframe.contentWindow.PDFViewerApplicationOptions.set('annotationMode', 2);
+
+                setTimeout(() => {
+                    const viewerDoc = iframe.contentWindow.document;
+                    // Hide the download button
+                    const downloadButton = viewerDoc.getElementById('download');
+                    if (downloadButton) {
+                        downloadButton.style.display = 'none';
+                        console.log("Download button hidden successfully.");
+                    } else {
+                        console.error("Download button not found in PDF.js viewer.");
+                    }
+
+                    // Hide the print button
+                    const printButton = viewerDoc.getElementById('print');
+                    if (printButton) {
+                        printButton.style.display = 'none';
+                        console.log("Print button hidden successfully.");
+                    } else {
+                        console.error("Print button not found in PDF.js viewer.");
+                    }
+
+                    // Disable text selection in the PDF viewer
+                    const viewerContainer = viewerDoc.getElementById('viewerContainer');
+                    if (viewerContainer) {
+                        viewerContainer.style.userSelect = 'none';
+                        viewerContainer.style.webkitUserSelect = 'none';
+                        viewerContainer.style.mozUserSelect = 'none';
+                        viewerContainer.style.msUserSelect = 'none';
+                    }
+
+                    loadBookmark(pdfUrl);
+                }, 1000);
+            } catch (error) {
+                console.error("Error setting up PDF.js viewer:", error);
+            }
+        };
+
+        iframe.onerror = () => {
+            console.error("Error loading iframe with PDF.js viewer.");
+        };
+
+        // Disable print shortcuts (Ctrl+P, Cmd+P)
+        document.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+                event.preventDefault();
+                console.log("Print shortcut (Ctrl+P/Cmd+P) disabled.");
+            }
+        });
+
+        function bookmarkPage() {
+            try {
+                const page = iframe.contentWindow.PDFViewerApplication.page;
+                localStorage.setItem(`bookmark_${pdfUrl}`, page);
+                alert(`Bookmarked page ${page} for "${title}"`);
+            } catch (error) {
+                console.error("Error bookmarking page:", error);
+                alert("Failed to bookmark page. Please ensure the PDF is loaded.");
+            }
+        }
+
+        function goToBookmark() {
+            try {
+                const page = localStorage.getItem(`bookmark_${pdfUrl}`);
+                if (page) {
+                    iframe.contentWindow.PDFViewerApplication.page = parseInt(page);
+                } else {
+                    alert('No bookmark set for this poem.');
+                }
+            } catch (error) {
+                console.error("Error going to bookmark:", error);
+                alert("Failed to go to bookmark. Please ensure the PDF is loaded.");
+            }
+        }
+
+        function loadBookmark(pdfUrl) {
+            try {
+                const page = localStorage.getItem(`bookmark_${pdfUrl}`);
+                if (page) {
+                    iframe.contentWindow.PDFViewerApplication.page = parseInt(page);
+                    console.log(`Loaded bookmark for ${pdfUrl}: page ${page}`);
+                }
+            } catch (error) {
+                console.error("Error loading bookmark:", error);
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
+        });
+    </script>
+</body>
+</html>

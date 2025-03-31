@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-91DDSJQ5K8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-91DDSJQ5K8');
+    </script>
+
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta name="keywords" content="poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry">
+    <meta name="author" content="Iron Heist (John Colt)">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="My Poetry Collection | Iron Heist (John Colt)">
+    <meta property="og:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Poetry Collection | Iron Heist (John Colt)">
+    <meta name="twitter:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "My Poetry Collection | Iron Heist (John Colt)",
+        "description": "Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.",
+        "url": "https://yourwebsite.com",
+        "author": {
+            "@type": "Person",
+            "name": "Iron Heist (John Colt)"
+        },
+        "image": "https://yourwebsite.com/poetry.png",
+        "keywords": "poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry"
+    }
+    </script>
+
+    <title>My Poetry Collection | Iron Heist (John Colt)</title>
+    <link rel="icon" href="poetry.png" type="image/x-icon" />
+    <link rel="preload" href="KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="BG 1.jpg" as="image">
+    <style>
+        @font-face {
+            font-family: 'KirimomiSwash';
+            src: url('KirimomiSwash.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'KirimomiSwash', 'Georgia', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            background-image: url('BG 1.jpg');
+            margin: 0;
+            padding: 0;
+            color: #343a40;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #121212 0%, #1a1a2e 100%);
+            color: #d3d3d3;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #F5F5DC;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .container {
+            background: #2a2a2a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            transition: color 0.3s;
+        }
+
+        body.dark-mode h1 { color: #e0e0e0; }
+
+        .introduction {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #495057;
+            transition: color 0.3s;
+        }
+
+        body.dark-mode .introduction { color: #b0b0b0; }
+
+        .search-container { text-align: center; margin-bottom: 30px; }
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .search-container input {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .search-container input:focus { border-color: #007bff; }
+
+        .book-collection {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        @media (max-width: 1200px) { .book-collection { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .book-collection { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) {
+            .book-collection { grid-template-columns: 1fr; }
+            .container { width: 90%; padding: 15px; }
+            .introduction { font-size: 1em; }
+        }
+
+        .book {
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .book { background: #333; }
+
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-title {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .book-title:hover { color: #0056b3; text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .footer { background-color: #1e1e1e; color: #e0e0e0; }
+        .footer .date-time { font-size: 0.9em; margin-top: 10px; }
+        .footer .attribution { font-size: 0.9em; margin-top: 10px; color: #FFA500; }
+        .footer .social-links { margin-top: 10px; }
+        .footer .social-links a { margin: 0 15px; color: #FFA500; }
+        .social-links img { width: 50px; height: 50px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .footer .social-links a:hover img { transform: scale(1.1); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+        .footer .copyright { font-size: 0.8em; margin-top: 20px; color: #FFA500; }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-top:hover { background-color: #0056b3; }
+
+        .random-poem-button { text-align: center; margin: 20px 0; }
+        .random-poem-button button { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        .random-poem-button button:hover { background-color: #218838; }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #343a40;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.2em;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode-toggle:hover { background-color: #23272b; transform: scale(1.1); }
+
+        .featured-section { margin: 40px 0; padding: 20px; background: rgba(255, 245, 230, 0.9); border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: background-color 0.3s, color 0.3s; }
+        .featured-section h2 { text-align: center; color: #d35400; margin-bottom: 25px; font-size: 1.5em; }
+        .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .featured-poem { position: relative; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease; }
+        .featured-poem:hover { transform: translateY(-3px); }
+        .featured-poem img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; }
+        .featured-info { padding: 10px; background: rgba(255, 255, 255, 0.9); border-radius: 0 0 6px 6px; }
+        .featured-info h3 { margin: 0; color: #2c3e50; font-size: 1.1em; }
+        .featured-info p { margin: 8px 0 0; color: #7f8c8d; font-size: 0.9em; }
+
+        @media (max-width: 768px) {
+            .featured-grid { grid-template-columns: 1fr; }
+            .featured-poem img { height: 150px; }
+        }
+
+        .timeline-section { margin: 40px 0; padding: 20px; background: rgba(255, 245, 230, 0.9); border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, color 0.3s; }
+        body.dark-mode .timeline-section { background-color: rgba(30, 30, 30, 0.9); color: #e0e0e0; }
+        .timeline-section h2 { text-align: center; color: #d35400; margin-bottom: 25px; font-size: 1.5em; }
+        .timeline { display: flex; overflow-x: auto; padding: 20px 0; scroll-behavior: smooth; }
+        .timeline-item { flex: 0 0 auto; width: 250px; margin-right: 20px; padding: 15px; background: rgba(255, 255, 255, 0.9); border-radius: 6px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: background-color 0.3s, color 0.3s; }
+        body.dark-mode .timeline-item { background-color: rgba(46, 46, 46, 0.9); color: #e0e0e0; }
+        .timeline-year { font-size: 1.2em; font-weight: bold; color: #007bff; margin-bottom: 10px; }
+        .timeline-content ul { list-style-type: disc; padding-left: 20px; }
+        .timeline-content ul li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
+    <a href="#" class="back-to-top" title="Go to top">↑</a>
+
+    <div class="container">
+        <h1>My Poetry Collection</h1>
+        <p class="introduction">
+            Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
+        </p>
+
+        <div class="random-poem-button">
+            <button onclick="redirectToRandomPoem()">🎲 Read a Random Poem</button>
+        </div>
+
+        <div class="featured-section">
+            <h2>🌟 Featured Poems 🌟</h2>
+            <div class="featured-grid">
+                <div class="featured-poem">
+                    <a href="viewer.html?pdf=pdfs/GARDEN OF GRIEF.pdf&title=Garden of Grief" target="_blank">
+                        <img src="GOG.jpeg" alt="Garden of Grief - A Collection of Poems by Iron Heist">
+                        <div class="featured-info">
+                            <h3>Garden of Grief</h3>
+                            <p>A soul-stirring journey through loss and renewal</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="featured-poem">
+                    <a href="viewer.html?pdf=pdfs/You and the Moon.pdf&title=You and the Moon" target="_blank">
+                        <img src="You are my moonlight.jpeg" alt="You and the Moon - Romantic Poetry by Iron Heist">
+                        <div class="featured-info">
+                            <h3>You and the Moon</h3>
+                            <p>Romantic verses bathed in lunar glow</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
+        </div>
+
+        <div class="book-collection" id="bookCollection"></div>
+
+        <div class="timeline-section">
+            <h2>📜 Poetry Timeline 📜</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>Drunk Off Her</strong> and <strong>You and the Moon</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Fool's Dream</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Wrote <strong>A Letdown</strong></li>
+                            <li>Wrote <strong>A Diary of My Thoughts</strong></li>
+                            <li>Wrote <strong>Midday Blues</strong></li>
+                            <li>Wrote <strong>Fading Light?</strong></li>
+                            <li>Wrote <strong>Dawn & Dusk</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Published <strong>Garden of Grief</strong> (a collection of:
+                                <ul>
+                                    <li>A Diary of My Thoughts</li>
+                                    <li>Midday Blues</li>
+                                    <li>Fading Light?</li>
+                                    <li>Dawn & Dusk</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                <img src="wattpad.png" alt="Wattpad">
+            </a>
+        </div>
+
+        <div class="attribution">
+            <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Freepik - Flaticon</a><br>
+            <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" style="color: #FFA500;">Instagram logo icons created by Freepik - Flaticon</a>
+        </div>
+
+        <p class="date-time" id="date-time"></p>
+
+        <div class="copyright">
+            © <span id="current-year"></span> | All Rights Reserved. Do not use without permission. For permission, email at <a href="mailto:ironheist6@gmail.com" style="color: #FFA500;">ironheist6@gmail.com</a>
+        </div>
+    </div>
+
+    <script>
+    const books = [
+        { title: "Garden of Grief", href: "pdfs/GARDEN OF GRIEF.pdf", imgSrc: "GOG.jpeg", alt: "Garden of Grief - A Collection of Poems by Iron Heist" },
+        { title: "A Diary of My Thoughts", href: "pdfs/A Diary of MY thoughts.pdf", imgSrc: "A Diary of my thoughts.jpeg", alt: "A Diary of My Thoughts - Philosophical Poetry by Iron Heist" },
+        { title: "Midday Blues", href: "pdfs/Midday Blues.pdf", imgSrc: "Midday Blues.jpeg", alt: "Midday Blues - Emotional Poetry by Iron Heist" },
+        { title: "Fading Light?", href: "pdfs/Fading Light.pdf", imgSrc: "Fading Light.jpeg", alt: "Fading Light? - Philosophical Poetry by Iron Heist" },
+        { title: "Dawn & Dusk", href: "pdfs/Dawn and Dusk.pdf", imgSrc: "Dawn & Dusk.jpeg", alt: "Dawn & Dusk - Reflective Poetry by Iron Heist" },
+        { title: "A Letdown", href: "pdfs/A Letdown.pdf", imgSrc: "A Letdown.jpeg", alt: "A Letdown - Emotional Poetry by Iron Heist" },
+        { title: "Drunk Off Her", href: "pdfs/DRUNK OFF HER.pdf", imgSrc: "Drunk OFF her.jpeg", alt: "Drunk Off Her - Romantic Poetry by Iron Heist" },
+        { title: "You and the Moon", href: "pdfs/You and the Moon.pdf", imgSrc: "You are my moonlight.jpeg", alt: "You and the Moon - Romantic Poetry by Iron Heist" },
+        { title: "A Fool's Dream", href: "pdfs/A Fool's Dream.pdf", imgSrc: "A Fools Dream.jpeg", alt: "A Fool's Dream - Philosophical Poetry by Iron Heist" }
+    ];
+
+    function renderBooks() {
+        const bookCollection = document.getElementById('bookCollection');
+        let html = '';
+        books.forEach(book => {
+            html += `
+                <div class="book" data-title="${book.title}" role="article" aria-label="${book.title}">
+                    <a href="viewer.html?pdf=${encodeURIComponent(book.href)}&title=${encodeURIComponent(book.title)}" target="_blank">
+                        <img src="${book.imgSrc}" alt="${book.alt}" loading="lazy">
+                        <p class="book-title">${book.title}</p>
+                    </a>
+                </div>
+            `;
+        });
+        bookCollection.innerHTML = html;
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    window.onscroll = function() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+
+    function redirectToRandomPoem() {
+        const randomBook = books[Math.floor(Math.random() * books.length)];
+        window.open(`viewer.html?pdf=${encodeURIComponent(randomBook.href)}&title=${encodeURIComponent(randomBook.title)}`, '_blank');
+    }
+
+    function searchBooks() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toUpperCase();
+        const booksElements = document.getElementsByClassName('book');
+        let visibleCount = 0;
+
+        for (let i = 0; i < booksElements.length; i++) {
+            const title = booksElements[i].getElementsByClassName('book-title')[0];
+            const txtValue = title.textContent || title.innerText;
+            if (txtValue.toUpperCase().includes(filter)) {
+                booksElements[i].style.display = "";
+                visibleCount++;
+            } else {
+                booksElements[i].style.display = "none";
+            }
+        }
+
+        const bookCollection = document.getElementById('bookCollection');
+        if (visibleCount === 0) {
+            bookCollection.innerHTML = '<p style="text-align: center; color: #888;">No books found.</p>';
+            setTimeout(renderBooks, 2000);
+        }
+    }
+
+    function formatAMPM(date) {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return `${hours}:${minutes}:${seconds} ${ampm}`;
+    }
+
+    function updateDateTime() {
+        const today = new Date();
+        const date = today.toDateString();
+        const time = formatAMPM(today);
+        document.getElementById('date-time').innerHTML = `${date} | ${time}`;
+        document.getElementById('current-year').textContent = today.getFullYear();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderBooks();
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
+    });
+</script>
+</body>
+</html>
