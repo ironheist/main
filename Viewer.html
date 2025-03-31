@@ -139,12 +139,13 @@
     </footer>
 
     <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return decodeURIComponent(urlParams.get(param));
-        }
 
-       const pdfUrl = getQueryParam('pdf');
+       function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return decodeURIComponent(urlParams.get(param));
+}
+
+const pdfUrl = getQueryParam('pdf');
 const title = getQueryParam('title');
 
 // Log the pdfUrl for debugging
@@ -153,7 +154,7 @@ console.log("PDF URL from query parameter:", pdfUrl);
 document.getElementById('pdfTitle').textContent = title || 'Poetry Viewer';
 const iframe = document.getElementById('pdfViewer');
 
-// Use the CDN-hosted viewer and construct an absolute URL for the PDF
+// Use the CDN-hosted viewer with an absolute URL for the PDF
 const absolutePdfUrl = `https://ironheist.github.io/main/${pdfUrl}`;
 const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
 
