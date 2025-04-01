@@ -154,24 +154,63 @@
             transform: scale(1.1);
         }
 
-        footer {
+        .footer {
             text-align: center;
+            margin-top: 50px;
             padding: 20px;
             background-color: #343a40;
             color: #fff;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        body.dark-mode footer {
+        body.dark-mode .footer {
             background-color: #1e1e1e;
+            color: #e0e0e0;
         }
 
-        footer a {
+        .footer .date-time {
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .footer .attribution {
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: #FFA500;
+        }
+
+        .footer .social-links {
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            margin: 0 15px;
+            color: #FFA500;
+        }
+
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .footer .social-links a:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer .copyright {
+            font-size: 0.8em;
+            margin-top: 20px;
+            color: #FFA500;
+        }
+
+        .footer a {
             color: #FFA500;
             text-decoration: none;
         }
 
-        footer a:hover {
+        .footer a:hover {
             text-decoration: underline;
         }
 
@@ -206,9 +245,31 @@
         <button class="back-button" onclick="window.location.href='index.html'">Back to Collection</button>
     </div>
 
-    <footer>
-        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#5e372c3130363b372d2a681e39333f3732703d3133"><span class="__cf_email__" data-cfemail="2e071c01000e030f1512412e09030f0702420f0301">[email&#160;protected]</span></a>
-    </footer>
+    <div class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                <img src="wattpad.png" alt="Wattpad">
+            </a>
+            <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                <img src="tumblr.png" alt="Tumblr">
+            </a>
+        </div>
+
+        <div class="attribution">
+            <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Freepik - Flaticon</a><br>
+            <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" style="color: #FFA500;">Instagram logo icons created by Freepik - Flaticon</a><br>
+            <a href="https://www.flaticon.com/free-icons/tumblr" title="tumblr icons" style="color: #FFA500;">Tumblr icons created by Freepik - Flaticon</a>
+        </div>
+
+        <p class="date-time" id="date-time"></p>
+
+        <div class="copyright">
+            © <span id="current-year"></span> | All Rights Reserved. Do not use without permission. For permission, email at <a href="/cdn-cgi/l/email-protection#17e7f6f2f7e0e5e2f2f7b517e0eaf6e2f2f779e4e8ea" style="color: #FFA500;"><span class="__cf_email__" data-cfemail="4f3f2e2a2f383d3a2a2f6c0f38322e3a2a2f613c3032">[email&#160;protected]</span></a>
+        </div>
+    </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function getQueryParam(param) {
@@ -290,10 +351,33 @@
             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         }
 
+        function formatAMPM(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            return `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        function updateDateTime() {
+            const today = new Date();
+            const date = today.toDateString();
+            const time = formatAMPM(today);
+            document.getElementById('date-time').innerHTML = `${date} | ${time}`;
+            document.getElementById('current-year').textContent = today.getFullYear();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
             if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929ae898693c450d',t:'MTc0MzU0MDA5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>	
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929ae898693c450d',t:'MTc0MzU0MDA5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929b12d9ba53ad5c',t:'MTc0MzU0MTgzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
