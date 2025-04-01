@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iron Heist Poetry Viewer</title>
     <link rel="icon" href="poetry.png" type="image/x-icon" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Iron Heist Poetry Viewer">
+    <meta property="og:description" content="Read soul-stirring poetry by Iron Heist (John Colt).">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com/viewer.html">
+    <meta property="og:type" content="website">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Iron Heist Poetry Viewer">
+    <meta name="twitter:description" content="Read soul-stirring poetry by Iron Heist (John Colt).">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
     <style>
         @font-face {
             font-family: 'KirimomiSwash';
             src: url('KirimomiSwash.ttf') format('truetype');
+            font-display: swap;
         }
 
         body {
@@ -53,6 +65,19 @@
             flex: 1;
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #currentDateTime {
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
         .controls {
             display: flex;
             gap: 8px;
@@ -60,25 +85,27 @@
         }
 
         .controls button, .dark-mode-toggle {
-            background: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
             border: none;
             padding: 6px 12px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, box-shadow 0.3s;
             font-size: 0.9em;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .controls button:hover, .dark-mode-toggle:hover {
-            background: #0056b3;
+            background: linear-gradient(135deg, #0056b3, #003f87);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .dark-mode-toggle {
-            background: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             width: 36px;
             height: 30px;
             font-size: 1em;
@@ -89,6 +116,20 @@
             flex: 1;
             width: 100%;
             border: none;
+            touch-action: pinch-zoom;
+        }
+
+        #loadingOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
 
         footer {
@@ -104,8 +145,12 @@
         }
 
         footer a {
-            color: #FFA500;
+            color: #FFCA28;
             text-decoration: none;
+        }
+
+        body.dark-mode footer a {
+            color: #FFD54F;
         }
 
         footer a:hover {
@@ -117,8 +162,15 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .controls {
+            .header-right {
                 margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            #currentDateTime {
+                font-size: 0.8em;
+            }
+            .controls {
                 flex-wrap: wrap;
                 justify-content: flex-end;
                 width: 100%;
@@ -138,6 +190,14 @@
         }
 
         @media (max-width: 480px) {
+            .header-right {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+            #currentDateTime {
+                font-size: 0.7em;
+            }
             .controls {
                 gap: 5px;
             }
@@ -155,17 +215,22 @@
 <body oncontextmenu="return false;">
     <header>
         <h1 id="pdfTitle">Loading...</h1>
-        <div class="controls">
-            <button onclick="bookmarkPage()">Bookmark</button>
-            <button onclick="goToBookmark()">Go to Bookmark</button>
-            <button onclick="removeBookmark()">Remove Bookmark</button>
-            <button onclick="window.location.href='index.html'">Back</button>
-            <button class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</button>
+        <div class="header-right">
+            <div id="currentDateTime"></div>
+            <div class="controls">
+                <button onclick="toggleFavorite()" title="Add or remove this poem from favorites" aria-label="Add or remove this poem from favorites">❤️</button>
+                <button onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">Share</button>
+                <button onclick="window.location.href='index.html'" title="Return to the main page" aria-label="Return to the main page">Back</button>
+                <button class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+            </div>
         </div>
     </header>
+    <div id="loadingOverlay">
+        <div style="color: white; font-size: 1.2em;">Loading Poem...</div>
+    </div>
     <iframe id="pdfViewer" loading="lazy"></iframe>
     <footer>
-        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email&#160;protected]</span></a>
+        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email protected]</span></a>
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -177,37 +242,32 @@
 
         const pdfUrl = getQueryParam('pdf');
         const title = getQueryParam('title');
+        const iframe = document.getElementById('pdfViewer');
 
         document.getElementById('pdfTitle').textContent = title || 'Poetry Viewer';
-        const iframe = document.getElementById('pdfViewer');
 
         const absolutePdfUrl = `https://ironheist.github.io/main/${pdfUrl}`;
         const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
         iframe.src = viewerUrl;
 
+        // Update Open Graph and Twitter Card titles dynamically
+        document.querySelector('meta[property="og:title"]').setAttribute('content', title || 'Iron Heist Poetry Viewer');
+        document.querySelector('meta[name="twitter:title"]').setAttribute('content', title || 'Iron Heist Poetry Viewer');
+
         iframe.onload = () => {
             try {
-                iframe.contentWindow.PDFViewerApplicationOptions.set('disableTextLayer', true);
-                iframe.contentWindow.PDFViewerApplicationOptions.set('annotationMode', 2);
-
-                setTimeout(() => {
-                    const viewerDoc = iframe.contentWindow.document;
-                    const downloadButton = viewerDoc.getElementById('download');
-                    if (downloadButton) downloadButton.style.display = 'none';
-                    const printButton = viewerDoc.getElementById('print');
-                    if (printButton) printButton.style.display = 'none';
-                    const viewerContainer = viewerDoc.getElementById('viewerContainer');
-                    if (viewerContainer) {
-                        viewerContainer.style.userSelect = 'none';
-                        viewerContainer.style.webkitUserSelect = 'none';
-                        viewerContainer.style.mozUserSelect = 'none';
-                        viewerContainer.style.msUserSelect = 'none';
-                    }
-                    loadBookmark(pdfUrl);
-                }, 1000);
+                document.getElementById('loadingOverlay').style.display = 'none';
+                trackRecentlyViewed();
             } catch (error) {
-                console.error("Error setting up PDF.js viewer:", error);
+                console.error("Error during iframe load:", error);
+                document.getElementById('loadingOverlay').style.display = 'none';
             }
+        };
+
+        iframe.onerror = () => {
+            console.error("Error loading iframe with PDF.js viewer.");
+            document.getElementById('loadingOverlay').style.display = 'none';
+            alert("Failed to load the poem. Please try again later.");
         };
 
         document.addEventListener('keydown', (event) => {
@@ -216,53 +276,53 @@
             }
         });
 
-        function bookmarkPage() {
+        function toggleFavorite() {
             try {
-                const page = iframe.contentWindow.PDFViewerApplication.page;
-                localStorage.setItem(`bookmark_${pdfUrl}`, page);
-                alert(`Bookmarked page ${page} for "${title}"`);
-            } catch (error) {
-                console.error("Error bookmarking page:", error);
-                alert("Failed to bookmark page.");
-            }
-        }
-
-        function goToBookmark() {
-            try {
-                const page = localStorage.getItem(`bookmark_${pdfUrl}`);
-                if (page) {
-                    iframe.contentWindow.PDFViewerApplication.page = parseInt(page);
+                const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                const poem = { title, pdfUrl };
+                const index = favorites.findIndex(fav => fav.pdfUrl === pdfUrl);
+                if (index === -1) {
+                    favorites.push(poem);
+                    alert(`Added "${title}" to favorites!`);
                 } else {
-                    alert('No bookmark set for this poem.');
+                    favorites.splice(index, 1);
+                    alert(`Removed "${title}" from favorites!`);
                 }
+                localStorage.setItem('favorites', JSON.stringify(favorites));
             } catch (error) {
-                console.error("Error going to bookmark:", error);
-                alert("Failed to go to bookmark.");
+                console.error("Error toggling favorite:", error.message, error.stack);
+                alert(`Failed to toggle favorite: ${error.message}`);
             }
         }
 
-        function removeBookmark() {
-            try {
-                if (localStorage.getItem(`bookmark_${pdfUrl}`)) {
-                    localStorage.removeItem(`bookmark_${pdfUrl}`);
-                    alert(`Bookmark removed for "${title}"`);
-                } else {
-                    alert('No bookmark exists for this poem.');
-                }
-            } catch (error) {
-                console.error("Error removing bookmark:", error);
-                alert("Failed to remove bookmark.");
+        function sharePoem() {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('pdfTitle').textContent,
+                    url: url
+                }).catch(err => console.error('Share failed:', err));
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Poem URL copied to clipboard!');
+                }).catch(err => {
+                    console.error('Failed to copy URL:', err);
+                    alert('Failed to copy URL. Please copy manually: ' + url);
+                });
             }
         }
 
-        function loadBookmark(pdfUrl) {
+        function trackRecentlyViewed() {
             try {
-                const page = localStorage.getItem(`bookmark_${pdfUrl}`);
-                if (page) {
-                    iframe.contentWindow.PDFViewerApplication.page = parseInt(page);
-                }
+                const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+                const poem = { title, pdfUrl };
+                const index = recentlyViewed.findIndex(item => item.pdfUrl === pdfUrl);
+                if (index !== -1) recentlyViewed.splice(index, 1);
+                recentlyViewed.unshift(poem);
+                if (recentlyViewed.length > 5) recentlyViewed.pop();
+                localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
             } catch (error) {
-                console.error("Error loading bookmark:", error);
+                console.error("Error tracking recently viewed:", error.message, error.stack);
             }
         }
 
@@ -273,9 +333,27 @@
             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         }
 
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            const time = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            });
+            document.getElementById('currentDateTime').textContent = `${date}, ${time}`;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
             if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
+            updateDateTime(); // Initial call to set the date and time
+            setInterval(updateDateTime, 1000); // Update every second
         });
     </script>
 </body>
