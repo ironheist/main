@@ -80,7 +80,7 @@
 
         .controls {
             display: flex;
-            gap: 6px;
+            gap: 8px; /* Increased gap for better spacing */
             align-items: center;
         }
 
@@ -88,11 +88,11 @@
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
             border: none;
-            padding: 5px 10px;
+            padding: 6px 12px; /* Slightly larger padding for better touch targets */
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
-            font-size: 0.85em;
+            font-size: 0.9em; /* Slightly larger font for readability */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,57 +110,6 @@
             padding: 0;
         }
 
-        /* Scroll Toggle Switch */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 24px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "↕️"; /* Vertical icon for 'off' */
-            height: 20px;
-            width: 20px;
-            left: 2px;
-            bottom: 2px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        input:checked + .slider {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-        }
-
-        input:checked + .slider:before {
-            content: "↔️"; /* Horizontal icon for 'on' */
-            transform: translateX(26px);
-        }
-
         #pdfViewer {
             flex: 1;
             width: 100%;
@@ -168,46 +117,6 @@
             border: none;
             overflow: auto;
             position: relative;
-        }
-
-        /* Arrow Buttons for Horizontal Scrolling */
-        .scroll-arrows {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: none; /* Hidden by default, shown in horizontal mode */
-            justify-content: space-between;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
-        .scroll-arrow {
-            background: rgba(0, 123, 255, 0.8);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-            pointer-events: auto;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .scroll-arrow:hover {
-            background: rgba(0, 86, 179, 0.8);
-        }
-
-        #scrollLeft {
-            margin-left: 10px;
-        }
-
-        #scrollRight {
-            margin-right: 10px;
         }
 
         #loadingOverlay {
@@ -248,92 +157,61 @@
             text-decoration: underline;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             header {
                 padding: 8px 12px;
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row; /* Keep row layout for tablets */
+                align-items: center;
             }
             .header-right {
-                margin-top: 10px;
-                width: 100%;
-                justify-content: space-between;
+                margin-top: 0;
+                width: auto;
+                justify-content: flex-end;
             }
             #currentDateTime {
                 font-size: 0.75em;
             }
             .controls {
-                flex-wrap: wrap;
-                justify-content: flex-end;
-                width: 100%;
-                gap: 6px;
+                gap: 6px; /* Slightly smaller gap for tablets */
             }
             .controls button, .dark-mode-toggle {
-                padding: 4px 6px;
-                font-size: 0.75em;
+                padding: 5px 10px;
+                font-size: 0.85em;
             }
             .dark-mode-toggle {
-                width: 28px;
-                height: 24px;
-            }
-            .switch {
-                width: 40px;
-                height: 20px;
-            }
-            .slider:before {
-                height: 16px;
-                width: 16px;
-                left: 2px;
-                bottom: 2px;
-            }
-            input:checked + .slider:before {
-                transform: translateX(20px);
-            }
-            .scroll-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 1em;
+                width: 32px;
+                height: 28px;
             }
         }
 
         @media (max-width: 480px) {
             header {
                 padding: 6px 10px;
+                flex-direction: column; /* Stack elements on mobile */
+                align-items: flex-start;
             }
             .header-right {
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 8px;
+                margin-top: 8px;
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
             }
             #currentDateTime {
                 font-size: 0.65em;
             }
             .controls {
                 gap: 5px;
+                justify-content: flex-end;
+                width: 100%;
             }
             .controls button, .dark-mode-toggle {
-                padding: 3px 5px;
-                font-size: 0.65em;
+                padding: 4px 8px;
+                font-size: 0.75em;
             }
             .dark-mode-toggle {
-                width: 24px;
-                height: 22px;
-            }
-            .switch {
-                width: 36px;
-                height: 18px;
-            }
-            .slider:before {
-                height: 14px;
-                width: 14px;
-            }
-            input:checked + .slider:before {
-                transform: translateX(18px);
-            }
-            .scroll-arrow {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9em;
+                width: 28px;
+                height: 24px;
             }
         }
     </style>
@@ -347,10 +225,6 @@
                 <button onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">Share</button>
                 <button onclick="window.location.href='index.html'" title="Return to the main page" aria-label="Return to the main page">Back</button>
                 <button class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
-                <label class="switch" title="Toggle scroll direction" aria-label="Toggle scroll direction">
-                    <input type="checkbox" id="scrollToggle" onchange="toggleScrollMode()">
-                    <span class="slider"></span>
-                </label>
             </div>
         </div>
     </header>
@@ -358,10 +232,6 @@
         <div style="color: white; font-size: 1.2em;">Loading Poem...</div>
     </div>
     <iframe id="pdfViewer" loading="lazy"></iframe>
-    <div class="scroll-arrows" id="scrollArrows">
-        <button id="scrollLeft" class="scroll-arrow" onclick="scrollPDF('left')" title="Scroll left" aria-label="Scroll left">◄</button>
-        <button id="scrollRight" class="scroll-arrow" onclick="scrollPDF('right')" title="Scroll right" aria-label="Scroll right">►</button>
-    </div>
     <footer>
         © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email protected]</span></a>
     </footer>
@@ -390,8 +260,18 @@
             try {
                 document.getElementById('loadingOverlay').style.display = 'none';
                 trackRecentlyViewed();
-                const scrollMode = localStorage.getItem('scrollMode') || 'vertical';
-                applyScrollMode(scrollMode);
+                // Ensure vertical scrolling by default
+                const viewerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const viewerContainer = viewerDoc.querySelector('#viewerContainer');
+                if (viewerContainer) {
+                    viewerContainer.style.overflowX = 'hidden';
+                    viewerContainer.style.overflowY = 'auto';
+                    viewerContainer.style.whiteSpace = 'normal';
+                    viewerDoc.querySelectorAll('.page').forEach(page => {
+                        page.style.display = 'block';
+                        page.style.margin = '0 auto';
+                    });
+                }
             } catch (error) {
                 console.error("Error during iframe load:", error);
                 document.getElementById('loadingOverlay').style.display = 'none';
@@ -448,52 +328,6 @@
             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         }
 
-        function toggleScrollMode() {
-            const toggle = document.getElementById('scrollToggle');
-            const newMode = toggle.checked ? 'horizontal' : 'vertical';
-            localStorage.setItem('scrollMode', newMode);
-            applyScrollMode(newMode);
-        }
-
-        function applyScrollMode(mode) {
-            const iframe = document.getElementById('pdfViewer');
-            const scrollArrows = document.getElementById('scrollArrows');
-            const viewerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const viewerContainer = viewerDoc.querySelector('#viewerContainer'); // Target PDF.js container
-            if (viewerContainer) {
-                if (mode === 'horizontal') {
-                    viewerContainer.style.overflowX = 'auto';
-                    viewerContainer.style.overflowY = 'hidden';
-                    viewerContainer.style.whiteSpace = 'nowrap';
-                    viewerDoc.querySelectorAll('.page').forEach(page => {
-                        page.style.display = 'inline-block';
-                        page.style.verticalAlign = 'top';
-                        page.style.margin = '0 10px';
-                    });
-                    scrollArrows.style.display = 'flex';
-                } else {
-                    viewerContainer.style.overflowX = 'hidden';
-                    viewerContainer.style.overflowY = 'auto';
-                    viewerContainer.style.whiteSpace = 'normal';
-                    viewerDoc.querySelectorAll('.page').forEach(page => {
-                        page.style.display = 'block';
-                        page.style.margin = '0 auto';
-                    });
-                    scrollArrows.style.display = 'none';
-                }
-            }
-        }
-
-        function scrollPDF(direction) {
-            const iframe = document.getElementById('pdfViewer');
-            const viewerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const viewerContainer = viewerDoc.querySelector('#viewerContainer');
-            if (viewerContainer) {
-                const scrollAmount = direction === 'left' ? -300 : 300;
-                viewerContainer.scrollLeft += scrollAmount;
-            }
-        }
-
         function updateDateTime() {
             const now = new Date();
             const date = now.toLocaleDateString('en-US', { 
@@ -515,11 +349,9 @@
             if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
             updateDateTime();
             setInterval(updateDateTime, 1000);
-            const scrollMode = localStorage.getItem('scrollMode') || 'vertical';
-            document.getElementById('scrollToggle').checked = scrollMode === 'horizontal';
-            // Delay applying scroll mode to ensure PDF.js is ready
-            setTimeout(() => applyScrollMode(scrollMode), 500);
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9298253a892d4525',t:'MTc0MzUxMTEyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9298253a892d4525',t:'MTc0MzUxMTEyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929859466e47b046',t:'MTc0MzUxMzI1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
 </html>
