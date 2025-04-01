@@ -47,7 +47,7 @@
         header {
             background: #343a40;
             color: #fff;
-            padding: 15px 20px;
+            padding: 10px 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             display: flex;
             justify-content: space-between;
@@ -61,26 +61,26 @@
 
         header h1 {
             margin: 0;
-            font-size: 1.8em;
+            font-size: 1.5em;
             flex: 1;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         #currentDateTime {
-            font-size: 0.9em;
+            font-size: 0.8em;
             background: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
+            padding: 4px 8px;
             border-radius: 5px;
         }
 
         .controls {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             align-items: center;
         }
 
@@ -88,11 +88,11 @@
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
             border: none;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
-            font-size: 0.9em;
+            font-size: 0.85em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -105,18 +105,109 @@
         }
 
         .dark-mode-toggle {
-            background: linear-gradient(135deg, #007bff, #0056b3);
             width: 36px;
             height: 30px;
-            font-size: 1em;
             padding: 0;
+        }
+
+        /* Scroll Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "↕️"; /* Vertical icon for 'off' */
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        input:checked + .slider:before {
+            content: "↔️"; /* Horizontal icon for 'on' */
+            transform: translateX(26px);
         }
 
         #pdfViewer {
             flex: 1;
             width: 100%;
+            height: 100%;
             border: none;
-            touch-action: pinch-zoom;
+            overflow: auto;
+            position: relative;
+        }
+
+        /* Arrow Buttons for Horizontal Scrolling */
+        .scroll-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: none; /* Hidden by default, shown in horizontal mode */
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .scroll-arrow {
+            background: rgba(0, 123, 255, 0.8);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            pointer-events: auto;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .scroll-arrow:hover {
+            background: rgba(0, 86, 179, 0.8);
+        }
+
+        #scrollLeft {
+            margin-left: 10px;
+        }
+
+        #scrollRight {
+            margin-right: 10px;
         }
 
         #loadingOverlay {
@@ -159,6 +250,7 @@
 
         @media (max-width: 768px) {
             header {
+                padding: 8px 12px;
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -168,7 +260,7 @@
                 justify-content: space-between;
             }
             #currentDateTime {
-                font-size: 0.8em;
+                font-size: 0.75em;
             }
             .controls {
                 flex-wrap: wrap;
@@ -177,37 +269,71 @@
                 gap: 6px;
             }
             .controls button, .dark-mode-toggle {
-                padding: 5px 8px;
-                font-size: 0.8em;
+                padding: 4px 6px;
+                font-size: 0.75em;
             }
             .dark-mode-toggle {
-                width: 30px;
-                height: 26px;
+                width: 28px;
+                height: 24px;
             }
-            header h1 {
-                font-size: 1.5em;
+            .switch {
+                width: 40px;
+                height: 20px;
+            }
+            .slider:before {
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+            }
+            input:checked + .slider:before {
+                transform: translateX(20px);
+            }
+            .scroll-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
             }
         }
 
         @media (max-width: 480px) {
+            header {
+                padding: 6px 10px;
+            }
             .header-right {
                 flex-direction: column;
                 align-items: flex-end;
                 gap: 8px;
             }
             #currentDateTime {
-                font-size: 0.7em;
+                font-size: 0.65em;
             }
             .controls {
                 gap: 5px;
             }
             .controls button, .dark-mode-toggle {
-                padding: 4px 6px;
-                font-size: 0.7em;
+                padding: 3px 5px;
+                font-size: 0.65em;
             }
             .dark-mode-toggle {
-                width: 26px;
-                height: 24px;
+                width: 24px;
+                height: 22px;
+            }
+            .switch {
+                width: 36px;
+                height: 18px;
+            }
+            .slider:before {
+                height: 14px;
+                width: 14px;
+            }
+            input:checked + .slider:before {
+                transform: translateX(18px);
+            }
+            .scroll-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -218,10 +344,13 @@
         <div class="header-right">
             <div id="currentDateTime"></div>
             <div class="controls">
-                <button onclick="toggleFavorite()" title="Add or remove this poem from favorites" aria-label="Add or remove this poem from favorites">❤️</button>
                 <button onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">Share</button>
                 <button onclick="window.location.href='index.html'" title="Return to the main page" aria-label="Return to the main page">Back</button>
                 <button class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+                <label class="switch" title="Toggle scroll direction" aria-label="Toggle scroll direction">
+                    <input type="checkbox" id="scrollToggle" onchange="toggleScrollMode()">
+                    <span class="slider"></span>
+                </label>
             </div>
         </div>
     </header>
@@ -229,6 +358,10 @@
         <div style="color: white; font-size: 1.2em;">Loading Poem...</div>
     </div>
     <iframe id="pdfViewer" loading="lazy"></iframe>
+    <div class="scroll-arrows" id="scrollArrows">
+        <button id="scrollLeft" class="scroll-arrow" onclick="scrollPDF('left')" title="Scroll left" aria-label="Scroll left">◄</button>
+        <button id="scrollRight" class="scroll-arrow" onclick="scrollPDF('right')" title="Scroll right" aria-label="Scroll right">►</button>
+    </div>
     <footer>
         © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email protected]</span></a>
     </footer>
@@ -250,7 +383,6 @@
         const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(absolutePdfUrl)}`;
         iframe.src = viewerUrl;
 
-        // Update Open Graph and Twitter Card titles dynamically
         document.querySelector('meta[property="og:title"]').setAttribute('content', title || 'Iron Heist Poetry Viewer');
         document.querySelector('meta[name="twitter:title"]').setAttribute('content', title || 'Iron Heist Poetry Viewer');
 
@@ -258,6 +390,8 @@
             try {
                 document.getElementById('loadingOverlay').style.display = 'none';
                 trackRecentlyViewed();
+                const scrollMode = localStorage.getItem('scrollMode') || 'vertical';
+                applyScrollMode(scrollMode);
             } catch (error) {
                 console.error("Error during iframe load:", error);
                 document.getElementById('loadingOverlay').style.display = 'none';
@@ -275,25 +409,6 @@
                 event.preventDefault();
             }
         });
-
-        function toggleFavorite() {
-            try {
-                const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-                const poem = { title, pdfUrl };
-                const index = favorites.findIndex(fav => fav.pdfUrl === pdfUrl);
-                if (index === -1) {
-                    favorites.push(poem);
-                    alert(`Added "${title}" to favorites!`);
-                } else {
-                    favorites.splice(index, 1);
-                    alert(`Removed "${title}" from favorites!`);
-                }
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-            } catch (error) {
-                console.error("Error toggling favorite:", error.message, error.stack);
-                alert(`Failed to toggle favorite: ${error.message}`);
-            }
-        }
 
         function sharePoem() {
             const url = window.location.href;
@@ -333,6 +448,52 @@
             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         }
 
+        function toggleScrollMode() {
+            const toggle = document.getElementById('scrollToggle');
+            const newMode = toggle.checked ? 'horizontal' : 'vertical';
+            localStorage.setItem('scrollMode', newMode);
+            applyScrollMode(newMode);
+        }
+
+        function applyScrollMode(mode) {
+            const iframe = document.getElementById('pdfViewer');
+            const scrollArrows = document.getElementById('scrollArrows');
+            const viewerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const viewerContainer = viewerDoc.querySelector('#viewerContainer'); // Target PDF.js container
+            if (viewerContainer) {
+                if (mode === 'horizontal') {
+                    viewerContainer.style.overflowX = 'auto';
+                    viewerContainer.style.overflowY = 'hidden';
+                    viewerContainer.style.whiteSpace = 'nowrap';
+                    viewerDoc.querySelectorAll('.page').forEach(page => {
+                        page.style.display = 'inline-block';
+                        page.style.verticalAlign = 'top';
+                        page.style.margin = '0 10px';
+                    });
+                    scrollArrows.style.display = 'flex';
+                } else {
+                    viewerContainer.style.overflowX = 'hidden';
+                    viewerContainer.style.overflowY = 'auto';
+                    viewerContainer.style.whiteSpace = 'normal';
+                    viewerDoc.querySelectorAll('.page').forEach(page => {
+                        page.style.display = 'block';
+                        page.style.margin = '0 auto';
+                    });
+                    scrollArrows.style.display = 'none';
+                }
+            }
+        }
+
+        function scrollPDF(direction) {
+            const iframe = document.getElementById('pdfViewer');
+            const viewerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const viewerContainer = viewerDoc.querySelector('#viewerContainer');
+            if (viewerContainer) {
+                const scrollAmount = direction === 'left' ? -300 : 300;
+                viewerContainer.scrollLeft += scrollAmount;
+            }
+        }
+
         function updateDateTime() {
             const now = new Date();
             const date = now.toLocaleDateString('en-US', { 
@@ -352,9 +513,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
             if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
-            updateDateTime(); // Initial call to set the date and time
-            setInterval(updateDateTime, 1000); // Update every second
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            const scrollMode = localStorage.getItem('scrollMode') || 'vertical';
+            document.getElementById('scrollToggle').checked = scrollMode === 'horizontal';
+            // Delay applying scroll mode to ensure PDF.js is ready
+            setTimeout(() => applyScrollMode(scrollMode), 500);
         });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9298253a892d4525',t:'MTc0MzUxMTEyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
