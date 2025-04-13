@@ -112,6 +112,7 @@ body.dark-mode .search-container input {
     padding: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .book:hover {
@@ -231,7 +232,7 @@ body.dark-mode .footer {
 
 .random-poem-button button {
     background: #28a745;
-    color: Fragile;
+    color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
@@ -268,6 +269,40 @@ body.dark-mode .footer {
 .dark-mode-toggle:hover {
     background: #1e1e2f;
     transform: scale(1.1);
+}
+
+.quote-section {
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(255, 245, 230, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .quote-section {
+    background: rgba(40, 40, 50, 0.95);
+}
+
+.quote-section h2 {
+    color: #d35400;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.quote-section blockquote {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.3em;
+    color: #2c2e3b;
+    border-left: 5px solid #6b48ff;
+    padding-left: 20px;
+    transition: color 0.5s ease;
+}
+
+body.dark-mode .quote-section blockquote {
+    color: #e0e0e0;
 }
 
 .featured-section {
@@ -405,6 +440,100 @@ body.dark-mode .timeline-item {
     margin-bottom: 12px;
 }
 
+.about-section {
+    margin: 50px 0;
+    padding: 30px;
+    background: rgba(255, 245, 230, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .about-section {
+    background: rgba(40, 40, 50, 0.95);
+}
+
+.about-section h2 {
+    text-align: center;
+    color: #d35400;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.author-bio p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+    transition: color 0.5s ease;
+}
+
+body.dark-mode .author-bio p {
+    color: #b0b0b0;
+}
+
+/* New: Spotify Playlists Section */
+.spotify-section {
+    margin: 50px 0;
+    padding: 30px;
+    background: rgba(255, 245, 230, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, color 0.5s ease;
+    text-align: center;
+}
+
+body.dark-mode .spotify-section {
+    background: rgba(40, 40, 50, 0.95);
+}
+
+.spotify-section h2 {
+    color: #d35400;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.spotify-section p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+    transition: color 0.5s ease;
+}
+
+body.dark-mode .spotify-section p {
+    color: #b0b0b0;
+}
+
+.spotify-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+.spotify-playlist {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, transform 0.3s ease;
+}
+
+body.dark-mode .spotify-playlist {
+    background: rgba(46, 46, 46, 0.95);
+}
+
+.spotify-playlist:hover {
+    transform: translateY(-5px);
+}
+
+.spotify-playlist iframe {
+    border-radius: 8px;
+}
+
 @media (max-width: 1200px) {
     .book-collection {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -434,6 +563,12 @@ body.dark-mode .timeline-item {
     .featured-poem img {
         height: 180px;
     }
+    .spotify-grid {
+        grid-template-columns: 1fr;
+    }
+    .author-bio p {
+        font-size: 1em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -456,5 +591,8 @@ body.dark-mode .timeline-item {
     .random-poem-button button {
         padding: 10px 20px;
         font-size: 0.9em;
+    }
+    .quote-section blockquote {
+        font-size: 1.1em;
     }
 }
