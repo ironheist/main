@@ -64,6 +64,43 @@ const books = [
     }
 ];
 
+// Spotify Playlists Data (Add more playlists here as needed)
+const playlists = [
+    {
+        name: "SadBoi Era",
+        embedUrl: "https://open.spotify.com/embed/playlist/1pl65GxBYh9MbjPeg5NucI?si=a0a7e98717954fe6"
+    },
+    {
+        name: "My Fav",
+        embedUrl: "https://open.spotify.com/embed/playlist/4FYepxrlOEaPT1t6x4R4Vb?si=a600ae9eca074416"
+    }
+];
+
+// Quotes for Quote of the Day (Updated with quotes from PDFs)
+const quotes = [
+    { quote: "There will always be a fool within me, Perhaps that's why there's still a dream in me.", source: "A Fool's Dream" },
+    { quote: "You're always here in my mind Like a poem I could never write.", source: "A Fool's Dream" },
+    { quote: "Darkness is my closest ally. I see no escape from it. Perhaps it is my one and only friend.", source: "A Fool's Dream" },
+    { quote: "I look at the moon and I remember you. If you are not perfect, then how do you manage to light me up in my darkest hours?", source: "You and the Moon" },
+    { quote: "My love for you is eternal. Come see yourself through my eyes. Have a glimpse at what my universe looks like.", source: "You and the Moon" },
+    { quote: "The ocean is a friend of mine, And now I worry about it being an enemy, For keeping me at bay, A long way away, Away from you.", source: "You and the Moon" },
+    { quote: "I am engulfed in this darkness. You are my light, and to this pain you are its cure.", source: "Drunk Off Her" },
+    { quote: "Dreams connect us. What I dream of is what my mind thinks of my own existence. Maybe that's why I dream of you every night.", source: "Drunk Off Her" },
+    { quote: "You were just some sand that I was trying so hard to cling onto. All the best parts of you slipped out.", source: "Drunk Off Her" },
+    { quote: "I speak of my grief the way I speak of God—religiously, yet like a friend in need.", source: "Garden of Grief" },
+    { quote: "Even if the universe is full of stars, It will still stay dark. And the only thing that can shine brighter than the darkness is you.", source: "Garden of Grief" },
+    { quote: "Loss is imminent. It may be my niece, a lover, or a dream that I failed to discover.", source: "Garden of Grief" },
+    { quote: "Love is a gamble. It comes with a price. The price you pay when you lose love is losing yourself.", source: "A Letdown" },
+    { quote: "You were my summer, My autumn, But now that you have left me cold, I declare you to be my winter.", source: "A Letdown" },
+    { quote: "You are the ghost I cannot seem to push away. You are the witch of my so-called 'dream forest.'", source: "A Letdown" }
+];
+
+function displayQuoteOfTheDay() {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quoteElement = document.getElementById('quoteOfTheDay');
+    quoteElement.innerHTML = `"${randomQuote.quote}"<br><em>— from "${randomQuote.source}"</em>`;
+}
+
 function renderBooks() {
     const bookCollection = document.getElementById('bookCollection');
     let html = '';
@@ -78,6 +115,20 @@ function renderBooks() {
 `;
     });
     bookCollection.innerHTML = html;
+}
+
+// Render Spotify Playlists
+function renderPlaylists() {
+    const playlistContainer = document.getElementById('spotifyPlaylists');
+    let html = '';
+    playlists.forEach(playlist => {
+        html += `
+<div class="spotify-playlist">
+    <iframe style="border-radius:12px" src="${playlist.embedUrl}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+`;
+    });
+    playlistContainer.innerHTML = html;
 }
 
 function toggleDarkMode() {
@@ -146,6 +197,8 @@ function updateDateTime() {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderBooks();
+    displayQuoteOfTheDay();
+    renderPlaylists();
     updateDateTime();
     setInterval(updateDateTime, 1000);
     if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
