@@ -64,6 +64,11 @@
             Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
         </p>
 
+        <div class="quote-section">
+            <h2>Quote of the Day</h2>
+            <blockquote id="quoteOfTheDay">"Loading a poetic thought for you..."</blockquote>
+        </div>
+
         <div class="random-poem-button">
             <button onclick="redirectToRandomPoem()">🎲 Read a Random Poem</button>
         </div>
@@ -97,6 +102,20 @@
         </div>
 
         <div class="book-collection" id="bookCollection"></div>
+
+        <div class="about-section">
+            <h2>About the Author</h2>
+            <div class="about-content">
+                <div class="author-bio">
+                    <p>
+                        I am <strong>Iron Heist (John Colt)</strong>, a poet and philosopher weaving words from the depths of my soul. My journey with poetry began as a way to process the complexities of love, loss, and the human experience. Each verse I write is a reflection of my heart—a tapestry of emotions that I hope resonates with those who feel deeply.
+                    </p>
+                    <p>
+                        When I'm not writing, you can find me lost in thought by the ocean, sketching the stars, or sharing my musings on social media. Thank you for joining me on this poetic journey.
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <div class="timeline-section">
             <h2>📜 Poetry Timeline 📜</h2>
@@ -146,6 +165,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- New: Spotify Playlists Section -->
+        <div class="spotify-section">
+            <h2>🎶 My Spotify Playlists 🎶</h2>
+            <p>Listen to the music that inspires my poetry—a curated selection of tracks to accompany your reading journey.</p>
+            <div class="spotify-grid" id="spotifyPlaylists"></div>
+        </div>
     </div>
 
     <div class="footer">
@@ -170,11 +196,11 @@
         <p class="date-time" id="date-time"></p>
 
         <div class="copyright">
-            © <span id="current-year"></span> | All Rights Reserved. Do not use without permission. For permission, email at <a href="/cdn-cgi/l/email-protection#17e7f6f2f7e0e5e2f2f7b517e0eaf6e2f2f779e4e8ea" style="color: #FFA500;"><span class="__cf_email__" data-cfemail="4f3f2e2a2f383d3a2a2f6c0f38322e3a2a2f613c3032">[email&#160;protected]</span></a>
+            © <span id="current-year"></span> | All Rights Reserved. Do not use without permission. For permission, email at <a href="/cdn-cgi/l/email-protection#17e7f6f2f7e0e5e2f2f7b517e0eaf6e2f2f779e4e8ea" style="color: #FFA500;"><span class="__cf_email__" data-cfemail="4f3f2e2a2f383d3a2a2f6c0f38322e3a2a2f613c3032">[email protected]</span></a>
         </div>
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="script.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92fcdaab498b7bc0',t:'MTc0NDU2NzEzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
