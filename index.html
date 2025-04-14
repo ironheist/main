@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-91DDSJQ5K8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-91DDSJQ5K8');
-    </script>
-
-    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
     <meta name="keywords" content="poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry">
     <meta name="author" content="Iron Heist (John Colt)">
     <meta name="robots" content="index, follow">
-
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="My Poetry Collection | Iron Heist (John Colt)">
     <meta property="og:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
     <meta property="og:image" content="https://yourwebsite.com/poetry.png">
     <meta property="og:url" content="https://yourwebsite.com">
     <meta property="og:type" content="website">
-
-    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="My Poetry Collection | Iron Heist (John Colt)">
     <meta name="twitter:description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You are my Moonlight' for soul-stirring verses.">
     <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
-
-    <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -47,38 +31,53 @@
         "keywords": "poetry, philosophy, Iron Heist, John Colt, Ironheist6, Johncolt29, Garden of Grief, You are my Moonlight, philosophical poetry, emotional poetry"
     }
     </script>
-
     <title>My Poetry Collection | Iron Heist (John Colt)</title>
     <link rel="icon" href="1.png" type="image/x-icon" />
     <link rel="preload" href="KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="BG 1.jpg" as="image">
+    <link rel="preload" href="BG 1.webp" as="image" type="image/webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
-    <a href="#" class="back-to-top" title="Go to top">↑</a>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Iron Heist Poetry</h1>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#books">Books</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#playlists">Playlists</a></li>
+            </ul>
+            <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
+        </nav>
+    </header>
 
-    <div class="container">
-        <h1>My Poetry Collection</h1>
-        <p class="introduction">
-            Welcome to my personal collection of Poetry. <br> Each book holds a special place in my heart, reflecting various moments and emotions from my journey through life. <br> I hope you find solace, inspiration, and joy in reading them.
-        </p>
+    <section class="hero">
+        <h2>Poetry by Iron Heist</h2>
+        <p>Discover soulful verses that weave love, loss, and the human experience.</p>
+        <button onclick="redirectToRandomPoem()" class="cta-button">Read a Poem</button>
+    </section>
 
-        <div class="quote-section">
+    <main class="container">
+        <section class="quote-section" id="quote">
             <h2>Quote of the Day</h2>
-            <blockquote id="quoteOfTheDay">"Loading a poetic thought for you..."</blockquote>
-        </div>
+            <div id="quoteContainer">
+                <blockquote class="quote-text">"Loading a poetic thought for you..."</blockquote>
+                <p class="quote-source"></p>
+            </div>
+        </section>
 
-        <div class="random-poem-button">
-            <button onclick="redirectToRandomPoem()">🎲 Read a Random Poem</button>
-        </div>
-
-        <div class="featured-section">
-            <h2>🌟 Featured Poems 🌟</h2>
+        <section class="featured-section">
+            <h2>Featured Works</h2>
             <div class="featured-grid">
                 <div class="featured-poem">
                     <a href="viewer.html?pdf=pdfs/GARDEN OF GRIEF.pdf&title=Garden of Grief" target="_blank">
-                        <img src="GOG.jpeg" alt="Garden of Grief - A Collection of Poems by Iron Heist">
+                        <img src="GOG.webp" alt="Garden of Grief - A Collection of Poems by Iron Heist">
                         <div class="featured-info">
                             <h3>Garden of Grief</h3>
                             <p>A soul-stirring journey through loss and renewal</p>
@@ -87,7 +86,7 @@
                 </div>
                 <div class="featured-poem">
                     <a href="viewer.html?pdf=pdfs/You and the Moon.pdf&title=You and the Moon" target="_blank">
-                        <img src="You are my moonlight.jpeg" alt="You and the Moon - Romantic Poetry by Iron Heist">
+                        <img src="You are my moonlight.webp" alt="You and the Moon - Romantic Poetry by Iron Heist">
                         <div class="featured-info">
                             <h3>You and the Moon</h3>
                             <p>Romantic verses bathed in lunar glow</p>
@@ -95,15 +94,17 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
-        </div>
+        <section class="book-section" id="books">
+            <h2>Poetry Collections</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
+            </div>
+            <div class="book-collection" id="bookCollection"></div>
+        </section>
 
-        <div class="book-collection" id="bookCollection"></div>
-
-        <div class="about-section">
+        <section class="about-section" id="about">
             <h2>About the Author</h2>
             <div class="about-content">
                 <div class="author-bio">
@@ -115,10 +116,10 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="timeline-section">
-            <h2>📜 Poetry Timeline 📜</h2>
+        <section class="timeline-section" id="timeline">
+            <h2>Poetry Timeline</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-year">2022</div>
@@ -164,17 +165,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- New: Spotify Playlists Section -->
-        <div class="spotify-section">
-            <h2>🎶 My Spotify Playlists 🎶</h2>
+        <section class="spotify-section" id="playlists">
+            <h2>My Spotify Playlists</h2>
             <p>Listen to the music that inspires my poetry—a curated selection of tracks to accompany your reading journey.</p>
             <div class="spotify-grid" id="spotifyPlaylists"></div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <div class="footer">
+    <footer class="footer">
         <div class="social-links">
             <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
                 <img src="instagram.png" alt="Instagram">
@@ -186,21 +186,18 @@
                 <img src="tumblr.png" alt="Tumblr">
             </a>
         </div>
-
-        <div class="attribution">
-            <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Freepik - Flaticon</a><br>
-            <a href="https://www.flaticon.com/free-icons/instagram-logo" title="instagram logo icons" style="color: #FFA500;">Instagram logo icons created by Freepik - Flaticon</a><br>
-            <a href="https://www.flaticon.com/free-icons/tumblr" title="tumblr icons" style="color: #FFA500;">Tumblr icons created by Freepik - Flaticon</a>
-        </div>
-
         <p class="date-time" id="date-time"></p>
-
         <div class="copyright">
-            © <span id="current-year"></span> | All Rights Reserved. Do not use without permission. For permission, email at <a href="/cdn-cgi/l/email-protection#17e7f6f2f7e0e5e2f2f7b517e0eaf6e2f2f779e4e8ea" style="color: #FFA500;"><span class="__cf_email__" data-cfemail="4f3f2e2a2f383d3a2a2f6c0f38322e3a2a2f613c3032">[email protected]</span></a>
+            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#17e7f6f2f7e0e5e2f2f7b517e0eaf6e2f2f779e4e8ea">[email protected]</a>
         </div>
-    </div>
+        <div class="attribution">
+            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" title="Go to top">↑</a>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="script.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92fcdaab498b7bc0',t:'MTc0NDU2NzEzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93068fe5dc52e9f0',t:'MTc0NDY2ODkyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
