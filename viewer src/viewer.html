@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Heist Poetry Viewer</title>
+    <link rel="icon" href="../png src/1.png" type="image/x-icon" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Iron Heist Poetry Viewer">
+    <meta property="og:description" content="Read soul-stirring poetry by Iron Heist (John Colt).">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com/viewer.html">
+    <meta property="og:type" content="website">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Iron Heist Poetry Viewer">
+    <meta name="twitter:description" content="Read soul-stirring poetry by Iron Heist (John Colt).">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+    <link rel="stylesheet" href="viewer.css">
+</head>
+<body oncontextmenu="return false;">
+    <header>
+        <h1 id="pdfTitle">Loading...</h1>
+        <div class="header-right">
+            <div id="currentDateTime"></div>
+            <div class="controls">
+                <button onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">Share</button>
+                <button onclick="window.location.href='../index.html'" title="Return to the main page" aria-label="Return to the main page">Back</button>
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
+                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                        <img src="../svg src/moon.svg" alt="Moon icon for light mode" class="toggle-icon moon-icon">
+                        <img src="../svg src/sun.svg" alt="Sun icon for dark mode" class="toggle-icon sun-icon">
+                        <span class="toggle-ball"></span>
+                        <span class="sr-only">Toggle dark mode</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="loadingOverlay">
+        <div style="color: white; font-size: 1.2em;">Loading Poem...</div>
+    </div>
+    <iframe id="pdfViewer" loading="lazy"></iframe>
+    <footer>
+        © <span id="current-year"></span> Iron Heist (John Colt) | <a href="/cdn-cgi/l/email-protection#b5dcc7dadbddd0dcc6c183f5d2d8d4dcd99bd6dad8"><span class="__cf_email__" data-cfemail="18312a3736303d312b2c6e183f35393134763b3735">[email protected]</span></a>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="viewer.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9298253a892d4525',t:'MTc0MzUxMTEyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'929859466e47b046',t:'MTc0MzUxMzI1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'932661994aedbd48',t:'MTc0NTAwMjU3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
