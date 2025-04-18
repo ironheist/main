@@ -90,29 +90,54 @@ body.dark-mode {
     transform: rotate(180deg);
 }
 
+/* Dark Mode Toggle */
+.dark-mode-checkbox {
+    display: none;
+}
+
 .dark-mode-toggle {
-    background: #fff;
-    color: #2c2e3b;
-    padding: 8px;
-    border-radius: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    font-size: 1.2em;
-    width: 40px;
-    height: 40px;
+    position: relative;
+}
+
+.dark-mode-slider {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background: #2c2e3b;
+    border-radius: 50%;
+    transition: background 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode-toggle:hover {
+.dark-mode-checkbox:checked + .dark-mode-slider {
     background: #ffca28;
-    transform: scale(1.1);
 }
 
-body.dark-mode .dark-mode-toggle {
-    background: #333;
-    color: #e0e0e0;
+.dark-mode-slider::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('moon.svg') no-repeat center / contain;
+    filter: brightness(100%);
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.dark-mode-checkbox:checked + .dark-mode-slider::before {
+    background: url('sun.svg') no-repeat center / contain;
+    filter: brightness(100%);
+    transform: rotate(360deg);
+}
+
+.dark-mode-slider:hover {
+    box-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
 }
 
 /* Hero Section */
@@ -485,16 +510,22 @@ body.dark-mode .spotify-playlist h3 {
     bottom: 20px;
     right: 20px;
     background: #ffca28;
-    color: #2c2e3b;
-    padding: 10px 15px;
+    padding: 12px;
     border-radius: 50%;
     text-decoration: none;
     display: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top img {
+    width: 24px;
+    height: 24px;
+    display: block;
 }
 
 .back-to-top:hover {
     background: #e0b020;
+    transform: scale(1.1);
 }
 
 /* Responsive Design */
@@ -541,7 +572,15 @@ body.dark-mode .spotify-playlist h3 {
         position: absolute;
         top: 15px;
         right: 15px;
-        margin-top: 0;
+        width: 40px;
+        height: 40px;
+    }
+    .dark-mode-slider::before {
+        width: 24px;
+        height: 24px;
+    }
+    .dark-mode-checkbox:checked + .dark-mode-slider::before {
+        transform: rotate(360deg);
     }
     .hero {
         padding: 100px 20px;
