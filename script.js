@@ -37,7 +37,7 @@ const books = [
         imgSrc: "Dawn & Dusk.webp", 
         alt: "Dawn & Dusk - Reflective Poetry by Iron Heist",
         tooltip: "Wander through a poet’s twilight, where dawn and dusk collide in verses of growth and grief, unveiling the fractured beauty of a soul caught between shadows and light.",
-        intro: "Life is a dance between shadow and shimmer, a fragile balance of beginnings and endings. <b>Dawn & Dusk</b> is not merely a collection of poems—it is a poetic pilgrimage through the contrasts that define us, a meditation on the <b>beauty</b> and <b>burden</b> of existence.<br><br>Each verse here is a fragment of the human soul, pieced together from moments of growth, grief, and the special spaces in between. They are born from the green of lost summers, the stillness of frozen rivers, and the weight of memories that linger like uninvited guests. This collection wrestles with the duality of love and hate, the curse of longing, and the faint hope that flickers even in the darkest night.<br><br><b>Dawn & Dusk</b> delves into the complexities of overthinking, the permanence of loss, and the search for light amid life’s fractured mosaics. It is for those who have felt the chill of winter’s reign, who have questioned the mercy of gods, and who have sought meaning in the ruins of what once shone.<br><br>This book offers no easy answers. It is a refuge for those navigating the twilight hours, where dawn feels distant and dusk is all too near"
+        intro: "Life is a dance between shadow and shimmer, a fragile balance of beginnings and endings. <b>Dawn & Dusk</b> is not merely a collection of poems—it is a poetic pilgrimage through the contrasts that define us, a meditation on the <b>beauty</b> and <b>burden</b> of existence.<br><br>Each verse here is a fragment of the human soul, pieced together from moments of growth, grief, and the special spaces in between. They are born from the green of lost summers, the stillness of frozen rivers, and the weight of memories that linger like uninvited guests. This collection wrestles with the duality of love and hate, the curse of longing, and the faint hope that flickers even in the darkest night.<br><br><b>Dawn & Usk</b> delves into the complexities of overthinking, the permanence of loss, and the search for light amid life’s fractured mosaics. It is for those who have felt the chill of winter’s reign, who have questioned the mercy of gods, and who have sought meaning in the ruins of what once shone.<br><br>This book offers no easy answers. It is a refuge for those navigating the twilight hours, where dawn feels distant and dusk is all too near"
     },
     { 
         title: "A Letdown", 
@@ -78,7 +78,7 @@ const quotes = [
     { text: "There will always be a fool within me, Perhaps that's why there's still a dream in me.", book: "A Fool's Dream" },
     { text: "You're always here in my mind Like a poem I could never write.", book: "A Fool's Dream" },
     { text: "Darkness is my closest ally. I see no escape from it. Perhaps it is my one and only friend.", book: "A Fool's Dream" },
-    { text: "I look at the moon and I remember you. If you are not perfect, then how do you manage to light me up in my darkest hours?", book: "You and the Moon" },
+    { text: "I look at the moon and I see you. If you are not perfect, then how do you manage to light me up in my darkest hours?", book: "You and the Moon" },
     { text: "My love for you is eternal. Come see yourself through my eyes. Have a glimpse at what my universe looks like.", book: "You and the Moon" },
     { text: "The ocean is a friend of mine, And now I worry about it being an enemy, For keeping me at bay, A long way away, Away from you.", book: "You and the Moon" },
     { text: "I am engulfed in this darkness. You are my light, and to this pain you are its cure.", book: "Drunk Off Her" },
@@ -100,9 +100,8 @@ const playlists = [
 ];
 
 function renderBooks() {
-    // Only run on pages with bookCollection (i.e., index.html)
     const bookCollection = document.getElementById('bookCollection');
-    if (!bookCollection) return; // Skip if not on index.html
+    if (!bookCollection) return;
 
     let html = '';
     books.forEach(book => {
@@ -118,7 +117,6 @@ function renderBooks() {
     bookCollection.innerHTML = html;
 }
 
-// Function to display a random quote with typewriter effect
 function typeWriterQuote(quoteElement, text, speed = 50) {
     quoteElement.innerHTML = '';
     let i = 0;
@@ -134,7 +132,7 @@ function typeWriterQuote(quoteElement, text, speed = 50) {
 
 function displayRandomQuote() {
     const quoteContainer = document.getElementById('quoteContainer');
-    if (!quoteContainer) return; // Skip if not on index.html
+    if (!quoteContainer) return;
 
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteContainer.innerHTML = `
@@ -145,10 +143,9 @@ function displayRandomQuote() {
     typeWriterQuote(quoteTextElement, `"${randomQuote.text}"`);
 }
 
-// Function to render Spotify playlists
 function renderPlaylists() {
     const playlistContainer = document.getElementById('spotifyPlaylists');
-    if (!playlistContainer) return; // Skip if not on index.html
+    if (!playlistContainer) return;
 
     let html = '';
     playlists.forEach(playlist => {
@@ -163,20 +160,26 @@ function renderPlaylists() {
 }
 
 function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const darkModeToggle = document.querySelector('.dark-mode-toggle');
-    if (darkModeToggle) {
-        darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
+    const body = document.body;
+    const checkbox = document.getElementById('darkModeToggle');
+    const slider = document.querySelector('.dark-mode-slider');
+    
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    if (checkbox) checkbox.checked = isDarkMode;
+    if (slider) slider.setAttribute('aria-checked', isDarkMode);
+    localStorage.setItem('darkMode', isDarkMode);
 }
 
 function toggleNavMenu() {
     const navLinks = document.querySelector('.nav-links');
     const navToggle = document.querySelector('.nav-toggle i');
-    navLinks.classList.toggle('active');
-    navToggle.classList.toggle('fa-chevron-down');
-    navToggle.classList.toggle('fa-chevron-up');
+    if (navLinks && navToggle) {
+        navLinks.classList.toggle('active');
+        navToggle.classList.toggle('fa-chevron-down');
+        navToggle.classList.toggle('fa-chevron-up');
+    }
 }
 
 window.onscroll = function() {
@@ -197,7 +200,7 @@ function redirectToRandomPoem() {
 
 function searchBooks() {
     const input = document.getElementById('searchInput');
-    if (!input) return; // Skip if not on index.html
+    if (!input) return;
 
     const filter = input.value.toUpperCase();
     const booksElements = document.getElementsByClassName('book');
@@ -235,7 +238,7 @@ function formatAMPM(date) {
 function updateDateTime() {
     const dateTimeElement = document.getElementById('date-time');
     const currentYearElement = document.getElementById('current-year');
-    if (!dateTimeElement || !currentYearElement) return; // Skip if elements don't exist
+    if (!dateTimeElement || !currentYearElement) return;
 
     const today = new Date();
     const date = today.toDateString();
@@ -246,8 +249,8 @@ function updateDateTime() {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderBooks();
-    displayRandomQuote(); // Display a quote on page load
-    renderPlaylists(); // Render Spotify playlists on page load
+    displayRandomQuote();
+    renderPlaylists();
     updateDateTime();
     setInterval(updateDateTime, 1000);
     if (localStorage.getItem('darkMode') === 'true') toggleDarkMode();
@@ -257,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.addEventListener('click', toggleNavMenu);
     }
 
-    // Initialize section fade-in animations
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
