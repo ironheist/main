@@ -37,7 +37,12 @@
                 <li><a href="index.html#timeline">Timeline</a></li>
                 <li><a href="index.html#playlists">Playlists</a></li>
             </ul>
-            <div class="dark-mode-toggle" tabindex="0" onclick="toggleDarkMode()" onkeydown="if(event.key === 'Enter') toggleDarkMode()">🌙</div>
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
+                <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                    <span class="toggle-ball"></span>
+                </label>
+            </div>
         </nav>
     </header>
 
@@ -67,15 +72,21 @@
         </div>
         <p class="date-time" id="date-time"></p>
         <div class="copyright">
-            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#3c554e53525459554f480a7c5b515d5550125f5351">[email protected]</a>
         </div>
         <div class="attribution">
-            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a>
+            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a><br>
+            Back to top icon: <a href="https://www.flaticon.com/free-icons/up-arrow" title="up arrow icons" style="color: #FFA500;">Up arrow icons created by gariebaldy - Flaticon</a><br>
+            Wattpad icon: <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Pixel perfect - Flaticon</a><br>
+            Instagram icon: <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons" style="color: #FFA500;">Instagram icons created by edt.im - Flaticon</a><br>
+            Tumblr icon: <a href="https://www.flaticon.com/free-icons/tumblr-badge" title="tumblr badge icons" style="color: #FFA500;">Tumblr badge icons created by Laisa Islam Ani - Flaticon</a><br>
+            Favicon: <a href="https://www.flaticon.com/free-icons/medieval" title="medieval icons" style="color: #FFA500;">Medieval icons created by Freepik - Flaticon</a>
         </div>
     </footer>
 
-    <a href="#" class="back-to-top" title="Go to top">↑</a>
+    <a href="#" class="back-to-top" title="Go to top"><img src="top.png" alt="Back to top"></a>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="script.js"></script>
     <script src="book-details.js"></script>
 </body>
