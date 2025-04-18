@@ -118,16 +118,31 @@ function renderBooks() {
     bookCollection.innerHTML = html;
 }
 
-// Function to display a random quote
+// Function to display a random quote with typewriter effect
+function typeWriterQuote(quoteElement, text, speed = 50) {
+    quoteElement.innerHTML = '';
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            quoteElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
 function displayRandomQuote() {
     const quoteContainer = document.getElementById('quoteContainer');
     if (!quoteContainer) return; // Skip if not on index.html
 
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteContainer.innerHTML = `
-        <blockquote class="quote-text">"${randomQuote.text}"</blockquote>
+        <blockquote class="quote-text"></blockquote>
         <p class="quote-source">— ${randomQuote.book}</p>
     `;
+    const quoteTextElement = quoteContainer.querySelector('.quote-text');
+    typeWriterQuote(quoteTextElement, `"${randomQuote.text}"`);
 }
 
 // Function to render Spotify playlists
@@ -241,4 +256,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle) {
         navToggle.addEventListener('click', toggleNavMenu);
     }
+
+    // Initialize section fade-in animations
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 });
