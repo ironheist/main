@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed view of poetry collections by Iron Heist (John Colt).">
+    <meta name="keywords" content="poetry, Iron Heist, John Colt, philosophical poetry, emotional poetry">
+    <meta name="author" content="Iron Heist (John Colt)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Book Details | Iron Heist (John Colt)">
+    <meta property="og:description" content="Explore poetry by Iron Heist.">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com/book-details.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book Details | Iron Heist (John Colt)">
+    <meta name="twitter:description" content="Explore poetry by Iron Heist.">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+    <title>Book Details | Iron Heist (John Colt)</title>
+    <link rel="icon" href="png src/1.png" type="image/x-icon" />
+    <link rel="preload" href="fonts src/KirimomiSwash.ttf" as="font" type="font/ttf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="book-details.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Iron Heist Poetry</h1>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html#books">Books</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#timeline">Timeline</a></li>
+                <li><a href="../index.html#playlists">Playlists</a></li>
+            </ul>
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
+                <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                    <span class="toggle-ball"></span>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="book-details-section">
+            <h1 id="bookTitle">Loading...</h1>
+            <div class="book-cover">
+                <img id="bookCover" src="" alt="">
+            </div>
+            <div class="introduction" id="bookIntro">Loading introduction...</div>
+            <button class="read-button" onclick="goToViewer()">Press to Read</button>
+            <button class="back-button" onclick="window.location.href='../index.html'">Back to Collection</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                <img src="../png src/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                <img src="../png src/wattpad.png" alt="Wattpad">
+            </a>
+            <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                <img src="../png src/tumblr.png" alt="Tumblr">
+            </a>
+        </div>
+        <p class="date-time" id="date-time"></p>
+        <div class="copyright">
+            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#3c554e53525459554f480a7c5b515d5550125f5351">[email protected]</a>
+        </div>
+        <div class="attribution">
+            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a><br>
+            Back to top icon: <a href="https://www.flaticon.com/free-icons/up-arrow" title="up arrow icons" style="color: #FFA500;">Up arrow icons created by gariebaldy - Flaticon</a><br>
+            Wattpad icon: <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Pixel perfect - Flaticon</a><br>
+            Instagram icon: <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons" style="color: #FFA500;">Instagram icons created by edt.im - Flaticon</a><br>
+            Tumblr icon: <a href="https://www.flaticon.com/free-icons/tumblr-badge" title="tumblr badge icons" style="color: #FFA500;">Tumblr badge icons created by Laisa Islam Ani - Flaticon</a><br>
+            Favicon: <a href="https://www.flaticon.com/free-icons/medieval" title="medieval icons" style="color: #FFA500;">Medieval icons created by Freepik - Flaticon</a>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" title="Go to top"><img src="../png src/top.png" alt="Back to top"></a>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../script.js"></script>
+    <script src="book-details.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'932652f8a97268cc',t:'MTc0NTAwMTk3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

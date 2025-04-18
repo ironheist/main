@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the latest musings and reflections from Iron Heist (John Colt). Explore weekly blog posts on poetry, inspiration, and the creative process.">
+    <meta name="keywords" content="poetry, blog, Iron Heist, John Colt, Ironheist6, Johncolt29, philosophical poetry, emotional poetry">
+    <meta name="author" content="Iron Heist (John Colt)">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Blog | Iron Heist's Poetry">
+    <meta property="og:description" content="Read the latest musings and reflections from Iron Heist (John Colt). Explore weekly blog posts on poetry, inspiration, and the creative process.">
+    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
+    <meta property="og:url" content="https://yourwebsite.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Iron Heist's Poetry">
+    <meta name="twitter:description" content="Read the latest musings and reflections from Iron Heist (John Colt). Explore weekly blog posts on poetry, inspiration, and the creative process.">
+    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Blog | Iron Heist's Poetry",
+        "description": "Read the latest musings and reflections from Iron Heist (John Colt). Explore weekly blog posts on poetry, inspiration, and the creative process.",
+        "url": "https://yourwebsite.com/blog.html",
+        "author": {
+            "@type": "Person",
+            "name": "Iron Heist (John Colt)"
+        },
+        "image": "https://yourwebsite.com/poetry.png",
+        "keywords": "poetry, blog, Iron Heist, John Colt, Ironheist6, Johncolt29, philosophical poetry, emotional poetry"
+    }
+    </script>
+    <title>Blog | Iron Heist's Poetry</title>
+    <link rel="icon" href="../png src/1.png" type="image/x-icon" />
+    <link rel="preload" href="../fonts src/KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1><u>Iron Heist's Poetry</u></h1>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html#books">Books</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#timeline">Timeline</a></li>
+                <li><a href="../index.html#playlists">Playlists</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
+                <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                    <span class="toggle-ball"></span>
+                </label>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="blog-list-section">
+            <h2>Poetic Musings</h2>
+            <p>Explore my weekly reflections and inspirations behind my poetry.</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" onkeyup="searchBlogPosts()" placeholder="Search posts by title or keywords...">
+            </div>
+            <div class="archive-container">
+                <h3>Archive</h3>
+                <div id="archiveList"></div>
+            </div>
+            <div class="blog-grid" id="blogListContainer"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                <img src="../png src/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                <img src="../png src/wattpad.png" alt="Wattpad">
+            </a>
+            <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                <img src="../png src/tumblr.png" alt="Tumblr">
+            </a>
+        </div>
+        <p class="date-time" id="date-time"></p>
+        <div class="copyright">
+            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="mailto:ironheist6@gmail.com">ironheist6@gmail.com</a>
+        </div>
+        <div class="attribution">
+            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a><br>
+            Back to top icon: <a href="https://www.flaticon.com/free-icons/up-arrow" title="up arrow icons" style="color: #FFA500;">Up arrow icons created by gariebaldy - Flaticon</a><br>
+            Wattpad icon: <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Pixel perfect - Flaticon</a><br>
+            Instagram icon: <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons" style="color: #FFA500;">Instagram icons created by edt.im - Flaticon</a><br>
+            Tumblr icon: <a href="https://www.flaticon.com/free-icons/tumblr-badge" title="tumblr badge icons" style="color: #FFA500;">Tumblr badge icons created by Laisa Islam Ani - Flaticon</a><br>
+            Favicon: <a href="https://www.flaticon.com/free-icons/medieval" title="medieval icons" style="color: #FFA500;">Medieval icons created by Freepik - Flaticon</a>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" title="Go to top"><img src="../png src/top.png" alt="Back to top"></a>
+
+    <script src="../script.js"></script>
+</body>
+</html>
