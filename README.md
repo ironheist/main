@@ -4,6 +4,7 @@
 Welcome to the **Iron Heist Poetry Website**, a personal project by John Colt (Iron Heist). This site showcases a collection of poetry books, blog posts, Spotify playlists, and a PDF viewer for reading poetry collections. Built with HTML, CSS, and JavaScript, the website offers a clean, responsive design with dynamic content rendering.
 
 ## 🚀 Highlights
+
 - 📚 **Poetry Collections**: Browse and read poetry books with WebP cover images and PDF access.
 - ✍️ **Blog Posts**: Explore recent blog posts with previews and full content.
 - 🎶 **Spotify Playlists**: Enjoy embedded Spotify playlists curated by Iron Heist.
@@ -11,19 +12,22 @@ Welcome to the **Iron Heist Poetry Website**, a personal project by John Colt (I
 - 📖 **PDF Viewer**: Read poetry books directly on the site via a dedicated viewer.
 
 ## 📋 Table of Contents
-- [File Structure](#-file-structure)
-- [Project Overview](#-project-overview)
-- [Changes Made](#-changes-made)
-- [Instructions for Adding New Content](#-instructions-for-adding-new-content)
-  - [Adding a New Book](#adding-a-new-book)
-  - [Adding a New Quote](#adding-a-new-quote)
-  - [Adding a New Spotify Playlist](#adding-a-new-spotify-playlist)
-  - [Adding a New Blog Post](#adding-a-new-blog-post)
-- [Running the Project](#-running-the-project)
-- [Notes](#-notes)
-- [Credits](#-credits)
+
+- File Structure
+- Project Overview
+- Changes Made
+- Instructions for Adding New Content
+  - Adding a New Book
+  - Adding a New Quote
+  - Adding a New Spotify Playlist
+  - Adding a New Blog Post
+- Running the Project
+- Notes
+- Credits
+- Copyright
 
 ## 📂 File Structure
+
 ```
 root/
 ├── index.html              # Homepage with books, quotes, blogs, and playlists
@@ -72,22 +76,27 @@ root/
 ```
 
 ## 📖 Project Overview
+
 The website is designed to share Iron Heist’s poetry with the world. Key features include:
-- **Homepage (`index.html`)**: Displays a book collection, a random quote, blog previews, and Spotify playlists.
-- **Book Details (`book-details.html`)**: Shows a selected book’s cover, introduction, and a link to read the PDF.
-- **Blog Pages (`blog.html`, `blog-post.html`)**: Lists all blog posts and displays full content for individual posts.
-- **PDF Viewer (`viewer.html`)**: Allows users to read poetry books in PDF format directly on the site.
+
+- **Homepage (**`index.html`**)**: Displays a book collection, a random quote, blog previews, and Spotify playlists.
+- **Book Details (**`book-details.html`**)**: Shows a selected book’s cover, introduction, and a link to read the PDF.
+- **Blog Pages (**`blog.html`**,** `blog-post.html`**)**: Lists all blog posts and displays full content for individual posts.
+- **PDF Viewer (**`viewer.html`**)**: Allows users to read poetry books in PDF format directly on the site.
 
 The site uses `script.js` for dynamic rendering of content and interactivity like dark mode and navigation toggles.
 
 ## 🔍 Changes Made
+
 The project faced issues with WebP image loading on `book-details.html` and `index.html`. Here’s how they were resolved:
 
 ### Issue 1: WebP Images Not Loading on `book-details.html`
+
 - **Problem**: Incorrect `imgSrc` paths in `script.js` (`webp src/<filename>.webp`) resolved incorrectly from `book-details src/`.
 - **Fix**: Updated `book-details.js` to prepend `../` to `imgSrc` paths, ensuring correct resolution to `root/webp src/`.
 
 ### Issue 2: WebP Images Not Loading on `index.html`
+
 - **Problem**: Path adjustments broke image loading on `index.html`.
 - **Fix**: Reverted `imgSrc` paths in `script.js` to `webp src/<filename>.webp` (correct for `index.html`) and adjusted `book-details.js` to handle the path for `book-details.html`.
 
@@ -96,12 +105,19 @@ These changes ensure images load correctly on both pages.
 ## 📝 Instructions for Adding New Content
 
 ### Adding a New Book
+
 1. **Add the PDF File**:
+
    - Place the book’s PDF in `pdfs/` (e.g., `pdfs/New Book.pdf`).
+
 2. **Add the WebP Cover Image**:
+
    - Convert the cover to WebP and place it in `webp src/` (e.g., `webp src/New Book.webp`).
-3. **Update `script.js`**:
+
+3. **Update** `script.js`:
+
    - Add a new book object to the `books` array:
+
      ```javascript
      {
          title: "New Book",
@@ -112,34 +128,51 @@ These changes ensure images load correctly on both pages.
          intro: "This is a new book by Iron Heist.<br><br>Explore themes of hope and renewal."
      }
      ```
+
 4. **Test**:
+
    - Start a local server: `python -m http.server 8000`.
    - Visit `http://localhost:8000/index.html` and confirm the book appears.
    - Click the book to verify `book-details.html` loads correctly.
 
 ### Adding a New Quote
-1. **Update `script.js`**:
+
+1. **Update** `script.js`:
+
    - Add a new quote to the `quotes` array:
+
      ```javascript
      { text: "A new quote to inspire.", book: "New Book" }
      ```
+
 2. **Test**:
+
    - Reload `index.html` and refresh to see the new quote in the random quote section.
 
 ### Adding a New Spotify Playlist
+
 1. **Get the Embed URL**:
+
    - Copy the embed URL from Spotify (e.g., `https://open.spotify.com/embed/playlist/<id>?si=<some-id>`).
-2. **Update `script.js`**:
+
+2. **Update** `script.js`:
+
    - Add a new playlist to the `playlists` array:
+
      ```javascript
      { title: "New Playlist", embedUrl: "https://open.spotify.com/embed/playlist/<id>?si=<some-id>" }
      ```
+
 3. **Test**:
+
    - Reload `index.html` and confirm the playlist appears in the playlists section.
 
 ### Adding a New Blog Post
-1. **Update `script.js`**:
+
+1. **Update** `script.js`:
+
    - Add a new post to the `blogPosts` array:
+
      ```javascript
      {
          id: 3,
@@ -150,33 +183,49 @@ These changes ensure images load correctly on both pages.
          keywords: ["poetry", "reflection"]
      }
      ```
+
 2. **Test**:
+
    - Check `index.html` for the blog preview.
    - Visit `blog.html` and `blog-post.html?id=3` to confirm the post displays correctly.
 
 ## 🛠️ Running the Project
+
 1. **Start a Local Server**:
+
    - In the `root/` directory, run:
+
      ```bash
      python -m http.server 8000
      ```
+
 2. **Access the Website**:
+
    - Open `http://localhost:8000/index.html` in your browser.
+
 3. **Troubleshooting**:
+
    - Check the browser’s Network tab (F12) for 404 errors if resources don’t load.
    - Verify file paths in `script.js`.
    - Clear browser cache if changes don’t appear.
 
 ## 📌 Notes
+
 - **Case Sensitivity**: File names and paths are case-sensitive on some servers. Ensure consistency (e.g., `GOG.webp` matches the file name).
 - **Future Improvements**:
   - Add a `BASE_PATH` variable in `script.js` for more portable paths.
   - Implement error handling for failed image or PDF loads.
-- **Dependencies**: Uses Font Awesome (CDN) for icons—requires an internet connection.
+- **Dependencies**: The project uses Font Awesome via CDN for icons. An internet connection is required.
 
 ## 🙌 Credits
+
 - **Author**: Iron Heist (John Colt)
-- **Icons**: Sourced from [Flaticon](https://www.flaticon.com)
+- **Icons**: Sourced from Flaticon (see attribution in the website footer).
+- AI for helping me build this website
+
+## © Copyright
+
+© 2025 Iron Heist (John Colt). All rights reserved. For permissions or inquiries, contact ironheist6@gmail.com.
 
 ---
 
