@@ -35,18 +35,17 @@
     <link rel="icon" href="png src/1.png" type="image/x-icon" />
     <link rel="preload" href="fonts src/KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="webp src/BG 1.webp" as="image" type="image/webp">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="site-header">
         <nav class="navbar">
             <div class="logo">
-                <h1><u>Iron Heist's Poetry</u></h1>
+                <h1><span class="logo-first">Iron</span> <span class="logo-second">Heist</span></h1>
+                <p class="logo-subtitle">Poetry Collections</p>
             </div>
-            <button class="nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-chevron-down"></i>
-            </button>
+            
             <ul class="nav-links">
                 <li><a href="#books">Books</a></li>
                 <li><a href="#about">About</a></li>
@@ -54,24 +53,34 @@
                 <li><a href="#playlists">Playlists</a></li>
                 <li><a href="blog src/blog.html">Blog</a></li>
             </ul>
-            <div class="dark-mode-toggle">
-                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
-                <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
-                    <span class="toggle-ball"></span>
-                </label>
+            
+            <div class="header-controls">
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox">
+                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </header>
 
     <section class="hero">
-        <h2>Poetry by Iron Heist</h2>
-        <p>Discover soulful verses that weave love, loss, and the human experience.</p>
-        <button onclick="redirectToRandomPoem()" class="cta-button">Read a Poem</button>
+        <div class="hero-content">
+            <h2>Whispers of the Soul</h2>
+            <p class="hero-subtitle">Discover the poetry that dances between light and shadow</p>
+            <button onclick="redirectToRandomPoem()" class="cta-button">Read a Random Poem</button>
+        </div>
     </section>
 
     <main class="container">
         <section class="quote-section" id="quote">
-            <h2>Quote of the Day</h2>
+            <div class="section-header">
+                <h2>Verse of the Moment</h2>
+            </div>
             <div id="quoteContainer">
                 <blockquote class="quote-text">"Loading a poetic thought for you..."</blockquote>
                 <p class="quote-source"></p>
@@ -79,23 +88,33 @@
         </section>
 
         <section class="featured-section">
-            <h2>Featured Works</h2>
+            <div class="section-header">
+                <h2>Featured Collections</h2>
+            </div>
             <div class="featured-grid">
                 <div class="featured-poem">
                     <a href="viewer src/viewer.html?pdf=pdfs/GARDEN OF GRIEF.pdf&title=Garden of Grief" target="_blank">
-                        <img src="webp src/GOG.webp" alt="Garden of Grief - A Collection of Poems by Iron Heist">
+                        <div class="featured-image-container">
+                            <img src="webp src/GOG.webp" alt="Garden of Grief - A Collection of Poems by Iron Heist">
+                            <div class="featured-overlay"></div>
+                        </div>
                         <div class="featured-info">
                             <h3>Garden of Grief</h3>
                             <p>A soul-stirring journey through loss and renewal</p>
+                            <span class="featured-link">Explore Collection</span>
                         </div>
                     </a>
                 </div>
                 <div class="featured-poem">
                     <a href="viewer src/viewer.html?pdf=pdfs/You and the Moon.pdf&title=You and the Moon" target="_blank">
-                        <img src="webp src/You are my moonlight.webp" alt="You and the Moon - Romantic Poetry by Iron Heist">
+                        <div class="featured-image-container">
+                            <img src="webp src/You are my moonlight.webp" alt="You and the Moon - Romantic Poetry by Iron Heist">
+                            <div class="featured-overlay"></div>
+                        </div>
                         <div class="featured-info">
                             <h3>You and the Moon</h3>
                             <p>Romantic verses bathed in lunar glow</p>
+                            <span class="featured-link">Explore Collection</span>
                         </div>
                     </a>
                 </div>
@@ -103,14 +122,18 @@
         </section>
 
         <section class="blog-section" id="blog">
-            <h2>Poetic Musings</h2>
-            <p>Weekly reflections and inspirations behind my work.</p>
+            <div class="section-header">
+                <h2>Poetic Musings</h2>
+            </div>
+            <p class="section-subtitle">Weekly reflections and inspirations behind my work</p>
             <div class="blog-grid" id="blogContainer"></div>
-            <a href="blog src/blog.html" class="cta-button">View All Posts</a>
+            <a href="blog src/blog.html" class="cta-button secondary">View All Posts</a>
         </section>
 
         <section class="book-section" id="books">
-            <h2>Poetry Collections</h2>
+            <div class="section-header">
+                <h2>Poetry Collections</h2>
+            </div>
             <div class="search-container">
                 <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for a book...">
             </div>
@@ -118,21 +141,31 @@
         </section>
 
         <section class="about-section" id="about">
-            <h2>About the Author</h2>
+            <div class="section-header">
+                <h2>About the Poet</h2>
+            </div>
             <div class="about-content">
                 <div class="author-bio">
-                    <p>
-                        I am <strong>Iron Heist (John Colt)</strong>, a poet and philosopher weaving words from the depths of my soul. My journey with poetry began as a way to process the complexities of love, loss, and the human experience. Each verse I write is a reflection of my heart—a tapestry of emotions that I hope resonates with those who feel deeply.
-                    </p>
-                    <p>
-                        When I'm not writing, you can find me lost in thought by the ocean, sketching the stars, or sharing my musings on social media. Thank you for joining me on this poetic journey.
-                    </p>
+                    <div class="author-image"></div>
+                    <div class="bio-text">
+                        <p>
+                            I am <strong>Iron Heist (John Colt)</strong>, a poet and philosopher weaving words from the depths of my soul. My journey with poetry began as a way to process the complexities of love, loss, and the human experience. Each verse I write is a reflection of my heart—a tapestry of emotions that I hope resonates with those who feel deeply.
+                        </p>
+                        <p>
+                            When I'm not writing, you can find me lost in thought by the ocean, sketching the stars, or sharing my musings on social media. Thank you for joining me on this poetic journey.
+                        </p>
+                        <div class="signature">
+                            <img src="png src/2.png" alt="Iron Heist Signature">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="timeline-section" id="timeline">
-            <h2>Poetry Timeline</h2>
+            <div class="section-header">
+                <h2>Poetic Journey</h2>
+            </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-year">2022</div>
@@ -181,41 +214,85 @@
         </section>
 
         <section class="spotify-section" id="playlists">
-            <h2>My Spotify Playlists</h2>
-            <p>Listen to the music that inspires my poetry—a curated selection of tracks to accompany your reading journey.</p>
+            <div class="section-header">
+                <h2>Poetic Soundscapes</h2>
+            </div>
+            <p class="section-subtitle">Listen to the music that inspires my poetry—a curated selection of tracks to accompany your reading journey</p>
             <div class="spotify-grid" id="spotifyPlaylists"></div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="social-links">
-            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
-                <img src="png src/instagram.png" alt="Instagram">
-            </a>
-            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
-                <img src="png src/wattpad.png" alt="Wattpad">
-            </a>
-            <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
-                <img src="png src/tumblr.png" alt="Tumblr">
-            </a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#books">Collections</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#playlists">Playlists</a></li>
+                    <li><a href="blog src/blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                        <img src="png src/instagram.png" alt="Instagram" class="social-icon">
+                    </a>
+                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                        <img src="png src/wattpad.png" alt="Wattpad" class="social-icon">
+                    </a>
+                    <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                        <img src="png src/tumblr.png" alt="Tumblr" class="social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates on new collections and musings</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
-        <p class="date-time" id="date-time"></p>
-        <div class="copyright">
-            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#2c5c4d494c5b5e59494c0e2c5b514d59494c02">[email protected]</a>
-        </div>
-        <div class="attribution">
-            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a><br>
-            Back to top icon: <a href="https://www.flaticon.com/free-icons/up-arrow" title="up arrow icons" style="color: #FFA500;">Up arrow icons created by gariebaldy - Flaticon</a><br>
-            Wattpad icon: <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Pixel perfect - Flaticon</a><br>
-            Instagram icon: <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons" style="color: #FFA500;">Instagram icons created by edt.im - Flaticon</a><br>
-            Tumblr icon: <a href="https://www.flaticon.com/free-icons/tumblr-badge" title="tumblr badge icons" style="color: #FFA500;">Tumblr badge icons created by Laisa Islam Ani - Flaticon</a><br>
-            Favicon: <a href="https://www.flaticon.com/free-icons/medieval" title="medieval icons" style="color: #FFA500;">Medieval icons created by Freepik - Flaticon</a>
+        <div class="footer-bottom">
+            <p class="date-time" id="date-time"></p>
+            <div class="copyright">
+                © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#7e170c1110161b170d0a483e19131f1712501d1113"><span class="__cf_email__" data-cfemail="b4ddc6dbdadcd1ddc7c082f4d3d9d5ddd89ad7dbd9">[email protected]</span></a>
+            </div>
+            <div class="credits">
+                <p>Created by Iron Heist (John Colt). Icons by <a href="https://www.flaticon.com" target="_blank">Flaticon</a>. Built with AI assistance.</p>
+            </div>
         </div>
     </footer>
 
-    <a href="#" class="back-to-top" title="Go to top"><img src="png src/top.png" alt="Back to top"></a>
+    <a href="#" class="back-to-top" title="Go to top">
+        <img src="png src/top.png" alt="Back to Top" class="back-to-top-icon">
+    </a>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="script.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'932646c6ef5753de',t:'MTc0NTAwMTQ3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>
+        // Back to Top Button Functionality
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll for back to top
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
 </html>
