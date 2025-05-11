@@ -1,39 +1,12 @@
 {
-    "name": "Iron Heist Poetry",
-    "short_name": "Iron Heist",
-    "description": "Explore soul-stirring poetry by Iron Heist (John Colt), featuring collections, blogs, and curated playlists.",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#f8f9fa",
-    "theme_color": "#343a40",
-    "scope": "/",
-    "icons": [
-        {
-            "src": "app-icons src/ironheist-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "app-icons src/ironheist-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any"
-        },
-        {
-            "src": "app-icons src/ironheist-maskable-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "app-icons src/ironheist-maskable-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
-    ],
-    "lang": "en-US",
-    "dir": "ltr",
-    "orientation": "portrait"
+  "start_url": "/index.html",
+  "scope": "/main/",
+  "display": "standalone",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "name": "Iron Heist Poetry",
+  "theme_color": "#343a40",
+  "background_color": "#f8f9fa",
+  "short_name": "VerseVault",
+  "description": "Explore soul-stirring poetry by Iron Heist (John Colt). Dive into collections like Garden of Grief and You and the Moon."
 }
