@@ -41,7 +41,7 @@ root/
 │   └── blog-post.html      # Individual blog post page
 ├── book-details src/       # Book details page
 │   ├── book-details.html   # Displays selected book details
-│   ├── book-details.js     # JavaScript for book details page
+│   ├── book-details.js     # JavaScript for book-details page
 │   └── book-details.css    # CSS for book-details page
 ├── fonts src/              # Custom fonts
 │   └── KirimomiSwash.ttf   # Custom font for book-details page
@@ -80,7 +80,8 @@ root/
 │   ├── You are my moonlight.webp
 │   ├── A Fools Dream.webp
 │   ├── 2.webp              # Author image (light mode) for About section
-│   └── 3.webp              # Author image (dark mode) for About section
+│   ├── 3.webp              # Author image (dark mode) for About section
+│   └── 4.webp              # Additional WebP image
 └── README.markdown         # Project documentation
 ```
 
@@ -324,4 +325,4 @@ Dark mode is implemented via a toggle in `index.html`, controlled by `script.js`
 
 ---
 
-**Last Updated**: May 11, 2025
+**Last Updated**: May 12, 2025
