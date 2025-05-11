@@ -30,7 +30,7 @@ const books = [
         imgSrc: "webp src/Fading Light.webp", 
         alt: "Fading Light? - Philosophical Poetry by Iron Heist",
         tooltip: "Embark on a tender descent into dusk, where poems of love and loss flicker like fading light, revealing the beauty and ache of life's silent struggles.",
-        intro: "Love is a flame that warms, then consumes, leaving only embers to sift through in the dark. <b>Fading Light?</b> is not just a collection of poems—it is a tender descent into the twilight of connection, a lyrical elegy for what was, what might have been, and what lingers in the <b>silence</b>.<br><br>Each poem here is a pulse of raw emotion, tracing the arc of love's fragile beauty and its inevitable decay. From the desperate longing of unanswered letters to the quiet torment of memories that refuse to fade, these verses capture the ache of a heart stretched thin by absence. They are written in the haze of smoke and starlight, in the wreckage of dreams, and in the fleeting warmth of a touch that no longer exists.<br><br><b>Fading Light?</b> explores the duality of vulnerability and resilience, the weight of grief, and the haunting permanence of love lost to time. This collection is for those who have stared into the void of another's absence, who have sought solace in the ashes of their own words, and who have felt the slow dimming of a once-bright bond.<br><br>These pages don't promise dawn. They are a mirror to the dusk within us all, a quiet companion for when the light fades and the heart still beats"
+        intro: "Love is a flame that warms, then consumes, leaving only embers to sift through in the dark. <b>Fading Light?</b> is not just a collection of poems—it is a tender descent into the twilight of connection, a lyrical elegy for what was, what might have been, and what lingers in the <b>silence</b>.<br><br>Each poem here is a pulse of raw emotion, tracing the arc of love's fragile beauty and its inevitable decay. From the desperate longing of unanswered letters to the quiet torment of memories that refuse to fade, these verses capture the ache of a heart stretched thin by absence. They are written in the haze of smoke and starlight, in the wreckage of dreams, and in the fleeting warmth of a touch that no longer exists.<br><br><b>Fading Light?</b> explores the duality of vulnerability and resilience, the weight of grief, and the haunting permanence of love lost to time. This collection is for those who have stared into the void of another's absence, who have CONSTRUCTION sought solace in the ashes of their own words, and who have felt the slow dimming of a once-bright bond.<br><br>These pages don't promise dawn. They are a mirror to the dusk within us all, a quiet companion for when the light fades and the heart still beats"
     },
     { 
         title: "Dawn & Dusk", 
@@ -289,12 +289,20 @@ function toggleDarkMode() {
     const body = document.body;
     const checkbox = document.getElementById('darkModeToggle');
     const slider = document.querySelector('.dark-mode-slider');
+    const signatureImg = document.querySelector('.signature-img');
+    const authorImage = document.querySelector('.author-image');
     
     body.classList.toggle('dark-mode');
     const isDarkMode = body.classList.contains('dark-mode');
     
     if (checkbox) checkbox.checked = isDarkMode;
     if (slider) slider.setAttribute('aria-checked', isDarkMode);
+    if (signatureImg) {
+        signatureImg.src = isDarkMode ? 'png src/3.png' : 'png src/2.png';
+    }
+    if (authorImage) {
+        authorImage.style.backgroundImage = isDarkMode ? "url('webp src/3.webp')" : "url('webp src/2.webp')";
+    }
     localStorage.setItem('darkMode', isDarkMode);
 }
 
@@ -388,6 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (checkbox) checkbox.checked = true;
         const slider = document.querySelector('.dark-mode-slider');
         if (slider) slider.setAttribute('aria-checked', 'true');
+        const signatureImg = document.querySelector('.signature-img');
+        if (signatureImg) signatureImg.src = 'png src/3.png';
+        const authorImage = document.querySelector('.author-image');
+        if (authorImage) authorImage.style.backgroundImage = "url('webp src/3.webp')";
     }
 
     // Set up event listeners
