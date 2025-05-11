@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Allow: /blog src/
-Allow: /book-details src/
-Allow: /viewer src/
-Disallow: /jpegs/
-Sitemap: https://ironheist.github.io/main/sitemap.xml
