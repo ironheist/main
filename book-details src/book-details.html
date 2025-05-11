@@ -16,9 +16,9 @@
     <meta name="twitter:description" content="Explore poetry by Iron Heist.">
     <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
     <title>Book Details | Iron Heist (John Colt)</title>
-    <link rel="icon" href="png src/1.png" type="image/x-icon" />
-    <link rel="preload" href="fonts src/KirimomiSwash.ttf" as="font" type="font/ttf">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../png src/1.png" type="image/x-icon" />
+    <link rel="preload" href="../fonts src/KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="book-details.css">
 </head>
@@ -26,68 +26,157 @@
     <header class="site-header">
         <nav class="navbar">
             <div class="logo">
-                <h1>Iron Heist Poetry</h1>
+                <h1><span class="logo-first">Iron</span> <span class="logo-second">Heist</span></h1>
+                <p class="logo-subtitle">Poetry Collections</p>
             </div>
-            <button class="nav-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-chevron-down"></i>
-            </button>
+            
             <ul class="nav-links">
                 <li><a href="../index.html#books">Books</a></li>
                 <li><a href="../index.html#about">About</a></li>
                 <li><a href="../index.html#timeline">Timeline</a></li>
                 <li><a href="../index.html#playlists">Playlists</a></li>
+                <li><a href="../blog src/blog.html">Blog</a></li>
             </ul>
-            <div class="dark-mode-toggle">
-                <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
-                <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
-                    <span class="toggle-ball"></span>
-                </label>
+            
+            <div class="header-controls">
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox">
+                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </header>
 
     <main class="container">
         <section class="book-details-section">
-            <h1 id="bookTitle">Loading...</h1>
-            <div class="book-cover">
-                <img id="bookCover" src="" alt="">
+            <div class="book-details-header">
+                <h1 id="bookTitle">Loading...</h1>
+                <div class="book-meta">
+                    <span class="book-author">Iron Heist</span>
+                    <span class="book-year">2025</span>
+                </div>
             </div>
-            <div class="introduction" id="bookIntro">Loading introduction...</div>
-            <button class="read-button" onclick="goToViewer()">Press to Read</button>
-            <button class="back-button" onclick="window.location.href='../index.html'">Back to Collection</button>
+            
+            <div class="book-content">
+                <div class="book-cover-container">
+                    <div class="book-cover">
+                        <img id="bookCover" src="" alt="">
+                        <div class="book-cover-overlay"></div>
+                    </div>
+                    <div class="book-actions">
+                        <button class="read-button" onclick="goToViewer()">
+                            <i class="fas fa-book-open"></i> Read Now
+                        </button>
+                        <button class="back-button" onclick="window.location.href='../index.html'">
+                            <i class="fas fa-arrow-left"></i> Back to Collection
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="book-intro-container">
+                    <div class="intro-header">
+                        <h2>Introduction</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="introduction" id="bookIntro">
+                        Loading introduction...
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="social-links">
-            <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
-                <img src="../png src/instagram.png" alt="Instagram">
-            </a>
-            <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
-                <img src="../png src/wattpad.png" alt="Wattpad">
-            </a>
-            <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
-                <img src="../png src/tumblr.png" alt="Tumblr">
-            </a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="../index.html#books">Collections</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#timeline">Timeline</a></li>
+                    <li><a href="../index.html#playlists">Playlists</a></li>
+                    <li><a href="../blog src/blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                        <img src="../png src/instagram.png" alt="Instagram" class="social-icon">
+                    </a>
+                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                        <img src="../png src/wattpad.png" alt="Wattpad" class="social-icon">
+                    </a>
+                    <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                        <img src="../png src/tumblr.png" alt="Tumblr" class="social-icon">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
-        <p class="date-time" id="date-time"></p>
-        <div class="copyright">
-            © <span id="current-year"></span> Iron Heist. All Rights Reserved. For permissions, contact <a href="/cdn-cgi/l/email-protection#3c554e53525459554f480a7c5b515d5550125f5351">[email protected]</a>
-        </div>
-        <div class="attribution">
-            Icons by <a href="https://www.flaticon.com" style="color: #FFA500;">Flaticon</a><br>
-            Back to top icon: <a href="https://www.flaticon.com/free-icons/up-arrow" title="up arrow icons" style="color: #FFA500;">Up arrow icons created by gariebaldy - Flaticon</a><br>
-            Wattpad icon: <a href="https://www.flaticon.com/free-icons/wattpad" title="wattpad icons" style="color: #FFA500;">Wattpad icons created by Pixel perfect - Flaticon</a><br>
-            Instagram icon: <a href="https://www.flaticon.com/free-icons/instagram" title="instagram icons" style="color: #FFA500;">Instagram icons created by edt.im - Flaticon</a><br>
-            Tumblr icon: <a href="https://www.flaticon.com/free-icons/tumblr-badge" title="tumblr badge icons" style="color: #FFA500;">Tumblr badge icons created by Laisa Islam Ani - Flaticon</a><br>
-            Favicon: <a href="https://www.flaticon.com/free-icons/medieval" title="medieval icons" style="color: #FFA500;">Medieval icons created by Freepik - Flaticon</a>
+        <div class="footer-bottom">
+            <p class="date-time" id="date-time"></p>
+            <div class="copyright">
+                © <span id="current-year"></span> Iron Heist. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
-    <a href="#" class="back-to-top" title="Go to top"><img src="../png src/top.png" alt="Back to top"></a>
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <img src="../png src/top.png" alt="Back to Top" class="back-to-top-icon">
+    </a>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="../script.js"></script>
     <script src="book-details.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'932652f8a97268cc',t:'MTc0NTAwMTk3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>
+        // Initialize date and time display
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('date-time');
+            if (!dateTimeElement) return;
+
+            const now = new Date();
+            dateTimeElement.textContent = now.toLocaleString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            setTimeout(updateDateTime, 1000);
+        }
+
+        function setCurrentYear() {
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        }
+
+        // Apply dark mode if previously set
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            const checkbox = document.getElementById('darkModeToggle');
+            if (checkbox) checkbox.checked = true;
+        }
+
+        // Initialize functions when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDateTime();
+            setCurrentYear();
+        });
+    </script>
+</body>
 </html>
