@@ -542,7 +542,7 @@ body.dark-mode .quote-source {
 .author-image {
     min-width: 200px;
     height: 300px;
-    background: url('webp src/GOG.webp') center/cover;
+    background: url('webp src/3.webp') center/cover;
     border-radius: 8px;
     box-shadow: var(--shadow);
 }
