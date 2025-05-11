@@ -62,13 +62,14 @@ root/
 │   ├── tumblr.png
 │   ├── top.png             # Back-to-top icon
 │   ├── 1.png               # Favicon
-│   └── 2.png               # Signature image for About section
+│   ├── 2.png               # Signature image (light mode) for About section
+│   └── 3.png               # Signature image (dark mode) for About section
 ├── svg src/                # SVG images for dark mode toggle
 │   ├── moon.svg
 │   └── sun.svg
 ├── viewer src/             # PDF viewer page
 │   └── viewer.html         # Page for viewing PDFs
-├── webp src/               # WebP images (book covers)
+├── webp src/               # WebP images (book covers and author images)
 │   ├── GOG.webp
 │   ├── A Diary of my thoughts.webp
 │   ├── Midday Blues.webp
@@ -77,7 +78,9 @@ root/
 │   ├── A Letdown.webp
 │   ├── Drunk OFF her.webp
 │   ├── You are my moonlight.webp
-│   └── A Fools Dream.webp
+│   ├── A Fools Dream.webp
+│   ├── 2.webp              # Author image (light mode) for About section
+│   └── 3.webp              # Author image (dark mode) for About section
 └── README.markdown         # Project documentation
 ```
 
@@ -128,7 +131,7 @@ The UI, named **VerseVault**, is designed to be minimalist and elegant, prioriti
   - **Flexbox**: Employed for navigation, footers, and card content alignment.
   - **Transitions**: `0.3s ease` for background, color, and hover effects to ensure smooth interactions.
   - **Icons**: Font Awesome for navigation and social icons, SVG (`moon.svg`, `sun.svg`) for dark mode toggle.
-  - **Images**: WebP for book covers (`webp src/`), PNG for favicon and signature (`png src/`), optimized for fast loading.
+  - **Images**: WebP for book covers and author images (`webp src/`), PNG for favicon and signature (`png src/`), optimized for fast loading.
 
 ## 🔍 Changes Made
 
@@ -141,10 +144,11 @@ The project faced issues with WebP image loading and has been updated to include
   - **Problem**: Path adjustments broke image loading on `index.html`.
   - **Fix**: Reverted `imgSrc` paths in `script.js` to `webp src/<filename>.webp` (correct for `index.html`) and adjusted `book-details.js` to handle the path for `book-details.html`.
 - **Asset Update**:
-  - Added `png src/2.png` for the signature image in the "About the Poet" section of `index.html`.
+  - Added `png src/2.png` and `png src/3.png` for the signature image in the "About the Poet" section of `index.html` (light and dark mode, respectively).
+  - Added `webp src/2.webp` and `webp src/3.webp` for the author image in the "About the Poet" section of `index.html` (light and dark mode, respectively).
   - Updated `svg src/` to include `moon.svg` and `sun.svg` for dark mode toggle icons.
 - **Documentation Update**:
-  - Updated `README.markdown` to reflect the addition of `2.png` in the file structure and added Grid Layout Rules and Dark Mode Toggle Rules sections.
+  - Updated `README.markdown` to reflect the addition of `2.png`, `3.png`, `2.webp`, and `3.webp` in the file structure and added Grid Layout Rules and Dark Mode Toggle Rules sections.
 
 ## 📏 Grid Layout Rules
 
@@ -199,17 +203,19 @@ Dark mode is implemented via a toggle in `index.html`, controlled by `script.js`
     - Text: `color: #333333`.
     - Book cards: `background-color: #FFFFFF; border: 1px solid #DDDDDD`.
     - Icons: Use `png src/` social icons and `svg src/sun.svg` for toggle.
+    - Signature: Uses `png src/2.png`.
+    - Author Image: Uses `webp src/2.webp` (set dynamically via JavaScript).
   - **Dark Mode (`.dark-mode`)**:
     - Body: `background-color: #1A1A1A`.
     - Text: `color: #F0F0F0`.
     - Sections: `background-color: #2C2C2C`.
     - Book cards: `background-color: #333333; border: 1px solid #444444`.
     - Icons: Use `svg src/moon.svg` for toggle; social icons remain unchanged.
-    - Links: `color: #63B8FF` with `hover: #FF4500` for visibility.
-
-- **Transitions**:
-  - Apply `transition: background-color 0.3s ease, color 0.3s ease` to `body`, `section`, `.book-card`, and other elements for smooth changes.
-  - Avoid transitions on images to optimize performance.
+    - Signature: Uses `png src/3.png`.
+    - Author Image: Uses `webp src/3.webp` (set dynamically via JavaScript).
+  - **Transitions**:
+    - Apply `transition: background-color 0.3s ease, color 0.3s ease` to `body`, `section`, `.book-card`, and other elements for smooth changes.
+    - Avoid transitions on images to optimize performance.
 
 - **Responsive Considerations**:
   - Ensure toggle button is visible and clickable on all screen sizes (`padding: 10px`, `font-size: 1.2rem`).
