@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found on Iron Heist Poetry. Explore the poetry collections of Iron Heist (John Colt).">
+    <meta name="keywords" content="Iron Heist poetry, John Colt poetry, 404 error">
+    <meta name="author" content="Iron Heist (John Colt)">
+    <title>404 - Page Not Found | Iron Heist Poetry</title>
+    <link rel="icon" href="png%20src/1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* 404 Page Specific Styles */
+        .error-section {
+            text-align: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('webp%20src/BG%201.webp') center/cover no-repeat;
+            background-attachment: fixed;
+            color: var(--text-light);
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        body.dark-mode .error-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('webp%20src/BG%202.webp') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .error-section .section-header h2 {
+            font-size: 2.2em;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        body.dark-mode .error-section .section-header h2 {
+            color: var(--secondary-color);
+        }
+
+        .error-message {
+            font-size: 1.2em;
+            font-style: italic;
+            color: var(--text-light);
+            margin: 20px 0 30px;
+            max-width: 600px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards 0.3s;
+        }
+
+        /* Animation for error message */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon for poetic touch */
+        .error-section .section-header::before {
+            content: '\f02d'; /* Font Awesome book icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .error-section {
+                min-height: 60vh;
+                padding: 30px 15px;
+            }
+
+            .error-section .section-header h2 {
+                font-size: 1.8em;
+            }
+
+            .error-message {
+                font-size: 1em;
+                margin: 15px 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1><span class="logo-first">Iron</span> <span class="logo-second">Heist</span></h1>
+                <p class="logo-subtitle">Poetry Collections</p>
+            </div>
+            <div class="header-controls">
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox">
+                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="error-section">
+            <div class="section-header">
+                <h2>404 - Lost in the Verse</h2>
+            </div>
+            <p class="error-message">This page has slipped away like a fleeting poem, lost in the shadows of unwritten words.</p>
+            <a href="/main/" class="cta-button">Return to Home</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p class="date-time" id="date-time"></p>
+            <div class="copyright">
+                © <span id="current-year"></span> Iron Heist. All Rights Reserved.
+            </div>
+            <div class="credits">
+                <p>Created by Iron Heist (John Colt). Icons by <a href="https://www.flaticon.com" target="_blank">Flaticon</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Update date-time and current year
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('date-time');
+            if (dateTimeElement) {
+                const now = new Date();
+                dateTimeElement.textContent = now.toLocaleString('en-US', {
+                    month: 'short',
+                    day: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+            }
+        }
+
+        function setCurrentYear() {
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDateTime();
+            setCurrentYear();
+            setInterval(updateDateTime, 1000);
+
+            // Apply saved dark mode preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                const checkbox = document.getElementById('darkModeToggle');
+                if (checkbox) checkbox.checked = true;
+                const slider = document.querySelector('.dark-mode-slider');
+                if (slider) slider.setAttribute('aria-checked', 'true');
+            }
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('change', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isDarkMode);
+                    const slider = document.querySelector('.dark-mode-slider');
+                    if (slider) slider.setAttribute('aria-checked', isDarkMode.toString());
+                });
+            }
+        });
+    </script>
+</body>
+</html>
