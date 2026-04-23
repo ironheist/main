@@ -9,12 +9,13 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Book Details | Iron Heist (John Colt)">
     <meta property="og:description" content="Explore poetry by Iron Heist.">
-    <meta property="og:image" content="https://yourwebsite.com/poetry.png">
-    <meta property="og:url" content="https://yourwebsite.com/book-details.html">
+    <meta property="og:image" content="https://ironheist.github.io/main/webp%20src/4.webp">
+    <meta property="og:url" content="https://ironheist.github.io/main/book-details%20src/book-details.html">
+    <link rel="canonical" id="canonicalLink" href="https://ironheist.github.io/main/book-details%20src/book-details.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Book Details | Iron Heist (John Colt)">
     <meta name="twitter:description" content="Explore poetry by Iron Heist.">
-    <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
+    <meta name="twitter:image" content="https://ironheist.github.io/main/webp%20src/4.webp">
     <title>Book Details | Iron Heist (John Colt)</title>
     <link rel="icon" href="../png src/1.png" type="image/x-icon" />
     <link rel="preload" href="../fonts src/KirimomiSwash.ttf" as="font" type="font/ttf" crossorigin>
@@ -35,10 +36,8 @@
                 <li><a href="../index.html#about">About</a></li>
                 <li><a href="../index.html#timeline">Timeline</a></li>
                 <li><a href="../index.html#playlists">Playlists</a></li>
-                <li><a href="../blog src/blog.html">Blog</a></li>
+                <li><a href="../blog%20src/blog.html">Blog</a></li>
             </ul>
-            
-            <div class="header-controls">
                 <div class="dark-mode-toggle">
                     <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox">
                     <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
@@ -54,6 +53,13 @@
 
     <main class="container">
         <section class="book-details-section">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="breadcrumb-sep">›</span>
+                <a href="../index.html#books">Books</a>
+                <span class="breadcrumb-sep">›</span>
+                <span id="breadcrumbTitle">Loading...</span>
+            </nav>
             <div class="book-details-header">
                 <h1 id="bookTitle">Loading...</h1>
                 <div class="book-meta">
@@ -100,19 +106,19 @@
                     <li><a href="../index.html#about">About</a></li>
                     <li><a href="../index.html#timeline">Timeline</a></li>
                     <li><a href="../index.html#playlists">Playlists</a></li>
-                    <li><a href="../blog src/blog.html">Blog</a></li>
+                    <li><a href="../blog%20src/blog.html">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Connect</h3>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                    <a href="https://www.instagram.com/johncolt29" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Instagram">
                         <img src="../png src/instagram.png" alt="Instagram" class="social-icon">
                     </a>
-                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Wattpad">
                         <img src="../png src/wattpad.png" alt="Wattpad" class="social-icon">
                     </a>
-                    <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                    <a href="https://ironheist6.tumblr.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Tumblr">
                         <img src="../png src/tumblr.png" alt="Tumblr" class="social-icon">
                     </a>
                 </div>
@@ -137,8 +143,9 @@
         <img src="../png src/top.png" alt="Back to Top" class="back-to-top-icon">
     </a>
 
-    <script src="../script.js"></script>
-    <script src="book-details.js"></script>
+    <script defer src="../blog-data.js"></script>
+    <script defer src="../script.js"></script>
+    <script defer src="book-details.js"></script>
     <script>
         // Initialize date and time display
         function updateDateTime() {

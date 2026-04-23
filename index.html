@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the profound poetry and philosophical musings of Iron Heist (John Colt). Dive into collections like 'Garden of Grief' and 'You and the Moon' for soul-stirring verses.">
-    <meta name="keywords" content="Iron Heist poetry, John Colt poetry, philosophical poetry, emotional poetry, Garden of Grief, You and the Moon, poetry collections">
+    <meta name="description" content="Iron Heist (John Colt) poetry collections: Garden of Grief, A Diary of My Thoughts, Midday Blues, Fading Light?, Dawn &amp; Dusk, A Letdown, Drunk Off Her, You and the Moon, A Fool's Dream. Raw, honest verse on grief, love, and loss.">
+    <meta name="keywords" content="Iron Heist poetry, John Colt poetry, Garden of Grief, You and the Moon, A Fool's Dream, Drunk Off Her, A Letdown, Dawn and Dusk, Fading Light, Midday Blues, A Diary of My Thoughts, philosophical poetry, emotional poetry, poetry collections">
     <meta name="author" content="Iron Heist (John Colt)">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Iron Heist Poetry | John Colt">
@@ -20,42 +20,112 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Iron Heist Poetry",
-        "url": "https://ironheist.github.io/main/",
-        "description": "Explore the profound poetry of Iron Heist (John Colt), including collections like Garden of Grief and You and the Moon.",
-        "author": {
-            "@type": "Person",
-            "name": "Iron Heist (John Colt)"
-        },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://ironheist.github.io/main/?search={search_term_string}",
-            "query-input": "required name=search_term_string"
-        },
-        "hasPart": [
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://ironheist.github.io/main/#john-colt",
+                "name": "Iron Heist",
+                "alternateName": "John Colt",
+                "url": "https://ironheist.github.io/main/",
+                "sameAs": [
+                    "https://www.instagram.com/johncolt29",
+                    "https://www.wattpad.com/user/iron_heist",
+                    "https://ironheist6.tumblr.com/"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://ironheist.github.io/main/#website",
+                "name": "Iron Heist Poetry",
+                "url": "https://ironheist.github.io/main/",
+                "description": "Iron Heist (John Colt) poetry collections: Garden of Grief, A Diary of My Thoughts, Midday Blues, Fading Light?, Dawn & Dusk, A Letdown, Drunk Off Her, You and the Moon, A Fool's Dream.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://ironheist.github.io/main/?search={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
             {
                 "@type": "Book",
                 "name": "Garden of Grief",
-                "url": "https://ironheist.github.io/main/viewer%20src/viewer.html?pdf=pdfs/GARDEN%20OF%20GRIEF.pdf&title=Garden%20of%20Grief",
-                "author": {
-                    "@type": "Person",
-                    "name": "Iron Heist (John Colt)"
-                }
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=Garden%20of%20Grief",
+                "image": "https://ironheist.github.io/main/webp%20src/GOG.webp",
+                "description": "A collection of four poetry parts — A Diary of My Thoughts, Midday Blues, Fading Light?, and Dawn & Dusk — exploring grief, faith, love, and hope.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "A Diary of My Thoughts",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=A%20Diary%20of%20My%20Thoughts",
+                "image": "https://ironheist.github.io/main/webp%20src/A%20Diary%20of%20my%20thoughts.webp",
+                "description": "Poems written in sleepless hours — the pull of love, obsessive memory, and longing that has no name.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "Midday Blues",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=Midday%20Blues",
+                "image": "https://ironheist.github.io/main/webp%20src/Midday%20Blues.webp",
+                "description": "An ache that hits in the middle of the day — poems about faith, love, and being lost somewhere in between.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "Fading Light?",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=Fading%20Light%3F",
+                "image": "https://ironheist.github.io/main/webp%20src/Fading%20Light.webp",
+                "description": "The slow dimming — letters never sent, warmth that turned to smoke, and watching something leave before you knew what it was.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "Dawn & Dusk",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=Dawn%20%26%20Dusk",
+                "image": "https://ironheist.github.io/main/webp%20src/Dawn%20%26%20Dusk.webp",
+                "description": "Poems from the in-between: love and hate in the same chest, hope and despair taking turns, frozen rivers and summers that ended too fast.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "A Letdown",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=A%20Letdown",
+                "image": "https://ironheist.github.io/main/webp%20src/A%20Letdown.webp",
+                "description": "The price of loving someone — the pieces of yourself you spend, and what happens when they don't come back.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Book",
+                "name": "Drunk Off Her",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=Drunk%20Off%20Her",
+                "image": "https://ironheist.github.io/main/webp%20src/Drunk%20OFF%20her.webp",
+                "description": "Poems about a person you couldn't shake — the highs, the lows, coming down from someone like a substance.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
             },
             {
                 "@type": "Book",
                 "name": "You and the Moon",
-                "url": "https://ironheist.github.io/main/viewer%20src/viewer.html?pdf=pdfs/You%20and%20the%20Moon.pdf&title=You%20and%20the%20Moon",
-                "author": {
-                    "@type": "Person",
-                    "name": "Iron Heist (John Colt)"
-                }
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=You%20and%20the%20Moon",
+                "image": "https://ironheist.github.io/main/webp%20src/You%20are%20my%20moonlight.webp",
+                "description": "Letters that didn't go anywhere — poems of love across distance, written by the ocean at 2am.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
             },
             {
-                "@type": "Blog",
-                "name": "Poetic Musings",
-                "url": "https://ironheist.github.io/main/blog%20src/blog.html"
+                "@type": "Book",
+                "name": "A Fool's Dream",
+                "url": "https://ironheist.github.io/main/book-details%20src/book-details.html?title=A%20Fool%27s%20Dream",
+                "image": "https://ironheist.github.io/main/webp%20src/A%20Fools%20Dream.webp",
+                "description": "Poems about chasing what won't come, refusing to let go of illusions, and the dreams that only grow in the dark.",
+                "author": { "@id": "https://ironheist.github.io/main/#john-colt" },
+                "inLanguage": "en"
             }
         ]
     }
@@ -183,8 +253,8 @@
                     <div class="author-image"></div>
                     <div class="bio-text">
                         <p>I’m Jay, known online as Iron Heist or John Colt. I write poetry that’s raw, sad, and honest. My work lives in the quiet spaces between heartbreak, overthinking, and late-night questions about life, death, and whether anything really matters.</p>
-                        <p>Writing started as a way to survive grief, loneliness, and the weight of memories I couldn’t carry out loud. I don’t chase happy endings or pretend to have answers—just feelings, moments, and truths that ache to be heard.</p>
-                        <p>Most of my poems come from a place of silence—the kind you feel at 3 a.m. when everything slows down and all the pain you’ve been avoiding finally speaks. I write for the ones who overthink, who miss people they shouldn’t, who carry scars in places no one sees.</p>
+                        <p>Writing started as a way to survive grief, loneliness, and the weight of memories I couldn’t carry out loud. I don’t chase happy endings or pretend to have answers. Just feelings, moments, and truths that ache to be heard.</p>
+                        <p>Most of my poems come from a place of silence, the kind you feel at 3 a.m. when everything slows down and all the pain you’ve been avoiding finally speaks. I write for the ones who overthink, who miss people they shouldn’t, who carry scars in places no one sees.</p>
                         <p>If you’ve ever sat in silence and wondered if anyone else feels like you do, maybe my poems will make you feel a little less alone. Or at least, understood.</p>
                         <div class="signature">
                             <img src="png%20src/2.png" alt="Iron Heist signature" class="signature-img" loading="lazy">
@@ -249,7 +319,7 @@
             <div class="section-header">
                 <h2>Poetic Soundscapes</h2>
             </div>
-            <p class="section-subtitle">Listen to the music that inspires my poetry—a curated selection of tracks to accompany your reading journey</p>
+            <p class="section-subtitle">Listen to the music that inspires my poetry, a curated selection of tracks to accompany your reading journey</p>
             <div class="spotify-grid" id="spotifyPlaylists"></div>
         </section>
     </main>
@@ -269,13 +339,13 @@
             <div class="footer-section">
                 <h3>Connect</h3>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/johncolt29" target="_blank" aria-label="Follow Iron Heist on Instagram">
+                    <a href="https://www.instagram.com/johncolt29" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Instagram">
                         <img src="png%20src/instagram.png" alt="Iron Heist Instagram icon" class="social-icon" loading="lazy">
                     </a>
-                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" aria-label="Follow Iron Heist on Wattpad">
+                    <a href="https://www.wattpad.com/user/iron_heist" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Wattpad">
                         <img src="png%20src/wattpad.png" alt="Iron Heist Wattpad icon" class="social-icon" loading="lazy">
                     </a>
-                    <a href="https://ironheist6.tumblr.com/" target="_blank" aria-label="Follow Iron Heist on Tumblr">
+                    <a href="https://ironheist6.tumblr.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow Iron Heist on Tumblr">
                         <img src="png%20src/tumblr.png" alt="Iron Heist Tumblr icon" class="social-icon" loading="lazy">
                     </a>
                 </div>
@@ -304,7 +374,8 @@
         <img src="png%20src/top.png" alt="Back to top icon" class="back-to-top-icon" loading="lazy">
     </a>
 
-    <script src="script.js"></script>
+    <script defer src="blog-data.js"></script>
+    <script defer src="script.js"></script>
     <script>
         // Back to Top Button Functionality
         window.addEventListener('scroll', function() {

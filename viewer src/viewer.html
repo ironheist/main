@@ -18,19 +18,25 @@
     <meta name="twitter:image" content="https://yourwebsite.com/poetry.png">
     <link rel="stylesheet" href="viewer.css">
 </head>
-<body oncontextmenu="return false;">
+<body>
     <header>
         <h1 id="pdfTitle">Loading...</h1>
         <div class="header-right">
             <div id="currentDateTime"></div>
             <div class="controls">
-                <button onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">Share</button>
-                <button onclick="window.location.href='../index.html'" title="Return to the main page" aria-label="Return to the main page">Back</button>
+                <button class="btn-viewer btn-share" onclick="sharePoem()" title="Share this poem" aria-label="Share this poem">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    Share
+                </button>
+                <button class="btn-viewer btn-back" onclick="window.location.href='../index.html'" title="Return to the main page" aria-label="Return to the main page">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back
+                </button>
                 <div class="dark-mode-toggle">
                     <input type="checkbox" id="darkModeToggle" class="dark-mode-checkbox" onchange="toggleDarkMode()">
-                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false">
-                        <img src="../svg src/moon.svg" alt="Moon icon for light mode" class="toggle-icon moon-icon">
-                        <img src="../svg src/sun.svg" alt="Sun icon for dark mode" class="toggle-icon sun-icon">
+                    <label for="darkModeToggle" class="dark-mode-slider" role="switch" aria-checked="false" title="Toggle dark mode">
+                        <img src="../svg src/moon.svg" alt="" class="toggle-icon moon-icon">
+                        <img src="../svg src/sun.svg" alt="" class="toggle-icon sun-icon">
                         <span class="toggle-ball"></span>
                         <span class="sr-only">Toggle dark mode</span>
                     </label>
